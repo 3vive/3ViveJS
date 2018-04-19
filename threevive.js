@@ -227,8 +227,8 @@ Copyright 3Vive Company
     }
 
     //Check Partners
-    _threeViveObject.createNewUser() {
-      fetch('http://app.3vive.com:8080/api/v1/partners').then(function(response) {
+    _threeViveObject.createNewUser(userName, password, email) {
+      fetch('http://app.3vive.com:8080/api/v1/users/register?username='+userName+'&password='+password+'&email='+ email).then(function(response) {
         return response.json();
       }).then(function(newUser) {
         console.log(newUser);
