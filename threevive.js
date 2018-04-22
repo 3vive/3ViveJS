@@ -12,11 +12,11 @@ Copyright 3Vive Company
 
 
     //Generate the iframe in parent window
-    var iframe = document.createElement('iframe');
-    var html = '<body><div id="testerFrame"> Test </div></body>';
-    iframe.src = 'http://app.3vive.com:8080';
-    document.body.appendChild(iframe);
-    console.log('iframe.contentWindow =', iframe.contentWindow);
+    // var iframe = document.createElement('iframe');
+    // var html = '<body><div id="testerFrame"> Test </div></body>';
+    // iframe.src = 'http://app.3vive.com:8080';
+    // document.body.appendChild(iframe);
+    // console.log('iframe.contentWindow =', iframe.contentWindow);
 
 
 
@@ -25,14 +25,14 @@ Copyright 3Vive Company
 
 
     //Communicate through iframe using postmessage
-    var myObj = {
-      test: "test",
-      parentCookieInfo: threeViveCookieValue
-    };
-    Window.parent.postmessage(myObj, document.getElementById("testerFrame"));
+    // var myObj = {
+    //   test: "test",
+    //   parentCookieInfo: threeViveCookieValue
+    // };
+    // Window.parent.postmessage(myObj, document.getElementById("testerFrame"));
 
 
-    _threeViveObject.checkCookieState() {
+     _threeViveObject.checkCookieState = function() {
       //Check if cookie has value if it does pass it to the registerServiceWorker
 
       //read that cookie and pass it back
@@ -57,7 +57,7 @@ Copyright 3Vive Company
 
 
     }
-    _threeViveObject.scrollTrigger() {
+     _threeViveObject.scrollTrigger = function() {
 
 
 
@@ -125,7 +125,7 @@ Copyright 3Vive Company
           loginForm.style.display = 'block';
           registerForm.style.display = 'none';
 
-        //  debugger;
+          //  debugger;
 
         };
 
@@ -155,11 +155,7 @@ Copyright 3Vive Company
         registerForm.id = 'registerForm';
 
         // set the elements and styles on the form
-        registerForm.innerHTML = "<label>first name</label><br/>" +
-          "<input type='text' placeholder='first name' style='" + inputStyles + "' /><br/>" +
-          "<label>last name</label><br/>" +
-          "<input type='text' placeholder='last name' style='" + inputStyles + "' /><br/>" +
-          "<label>e-mail</label><br/>" +
+        registerForm.innerHTML ="<label>e-mail</label><br/>" +
           "<input type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
           "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
@@ -185,22 +181,22 @@ Copyright 3Vive Company
 
     }
 
-    _threeViveObject.scrollUntilPopup() {
+      _threeViveObject.scrollUntilPopup= function() {
       window.addEventListener('scroll', _threeViveObject.scrollTrigger)
     }
 
 
-    _threeViveObject.loadAllAdRevenue() {
+     _threeViveObject.loadAllAdRevenue = function() {
 
     };
-    _threeViveObject.load3ViveModule() {
+     _threeViveObject.load3ViveModule = function() {
 
     };
-    _threeViveObject.hideArticleContent() {
+     _threeViveObject.hideArticleContent=  function() {
 
     };
 
-    _threeViveObject.loginUser() {
+     _threeViveObject.loginUser= function() {
       //A stylized dedicated login window later on but this is a test
       var jsonResponse;
       var username = prompt("Please enter your usernmae:", "");
@@ -217,7 +213,7 @@ Copyright 3Vive Company
     //http://18.219.104.16:8081/article-reg
     //Make fetch requests for all users
 
-    _threeViveObject.getUsers() {
+     _threeViveObject.getUsers= function() {
       fetch('http://app.3vive.com:8080/api/v1/users').then(function(response) {
         return response.json();
       }).then(function(users) {
@@ -227,8 +223,8 @@ Copyright 3Vive Company
     }
 
     //Check Partners
-    _threeViveObject.createNewUser(userName, password, email) {
-      fetch('http://app.3vive.com:8080/api/v1/users/register?username='+userName+'&password='+password+'&email='+ email).then(function(response) {
+     _threeViveObject.createNewUser= function(userName, password, email) {
+      fetch('http://app.3vive.com:8080/api/v1/users/register?username=' + userName + '&password=' + password + '&email=' + email).then(function(response) {
         return response.json();
       }).then(function(newUser) {
         console.log(newUser);
@@ -237,7 +233,7 @@ Copyright 3Vive Company
     }
     //create a new user
     var thisPartnerName = "NYDN";
-    _threeViveObject.getPartnerNames(thisPartnerName) {
+     _threeViveObject.getPartnerNames = function(thisPartnerName) {
       fetch('http://app.3vive.com:8080/api/v1/users/register?partnerName=' + thisPartnerName).then(function(response) {
         return response.json();
       }).then(function(partners) {
@@ -248,7 +244,7 @@ Copyright 3Vive Company
 
     //Find a user passing username in as the argument
     //  var userName = "al";
-    _threeViveObject.getUserInfo(userName) {
+     _threeViveObject.getUserInfo = function(userName) {
       fetch('http://app.3vive.com:8080/api/v1/users/' + username).then(function(response) {
         return response.json();
       }).then(function(thisUser) {
@@ -257,7 +253,7 @@ Copyright 3Vive Company
     }
 
     // Just create a property to our library object.
-    _threeViveObject.Log = function(thingToLog) {
+     _threeViveObject.Log = function(thingToLog) {
       console.log("Log > Type of variable : " + typeof(thingToLog));
       console.log("Log > Is number : " + !isNaN(thingToLog));
       console.log("Log > Length : " + (thingToLog).length);
@@ -273,7 +269,8 @@ Copyright 3Vive Company
     window.threeVive = threeVive();
   }
 })(window); // We send the window variable withing our function
-_threeViveObject.checkCookieState();
+//threeVive.checkCookieState();
+threeVive.scrollTrigger();
 
 // Then we can call our custom function using
 //threeVive.log(["test1","test2"]);
