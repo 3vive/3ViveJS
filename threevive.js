@@ -32,7 +32,7 @@ Copyright 3Vive Company
     // Window.parent.postmessage(myObj, document.getElementById("testerFrame"));
 
 
-     _threeViveObject.checkCookieState = function() {
+    _threeViveObject.checkCookieState = function() {
       //Check if cookie has value if it does pass it to the registerServiceWorker
 
       //read that cookie and pass it back
@@ -57,13 +57,7 @@ Copyright 3Vive Company
 
 
     }
-     _threeViveObject.scrollTrigger = function() {
-
-
-
-
-
-
+    _threeViveObject.scrollTrigger = function() {
 
 
       if (window.scrollY > 200) {
@@ -71,16 +65,28 @@ Copyright 3Vive Company
 
         // create the elements
         var div = document.createElement('div'),
+          centeredDiv = document.createElement('div'),
           log = document.createElement('div'),
           reg = document.createElement('div'),
           loginForm = document.createElement('form'),
           registerForm = document.createElement('form');
-
+      //  registerForm
         // set body styles
         document.body.style.color = '#fff';
         document.body.style.textTransform = 'capitalize';
         //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
         document.body.style.backgroundSize = "cover";
+
+
+
+    centeredDiv.style.padding= '10px';
+    centeredDiv.style.position= 'fixed';
+    centeredDiv.style.zIndex= 1;
+    centeredDiv.style.left= 0;
+    centeredDiv.style.top= 0;
+    centeredDiv.style.width= '100%';
+    centeredDiv.style.height='100%';
+    centeredDiv.style.overflow= 'auto';
 
         // set main-div styles
         div.style.background = "rgba(0,0,0,0.5)";
@@ -89,12 +95,14 @@ Copyright 3Vive Company
         div.style.padding = '10px';
         div.style.borderRadius = '10px';
         div.style.paddingTop = '100px';
-        div.style.position = 'fixed';
+      //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
         div.style.width = '400px';
         div.style.height = '570px';
         div.style.overflow = 'auto';
+
+
 
 
         log.style.display = 'inline-block';
@@ -143,10 +151,10 @@ Copyright 3Vive Company
         loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
         loginForm.innerHTML = "<label>username</label><br/>" +
-          "<input type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
-          "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='submit' value='Login' onsubmit='debugger;'  style='" + btnStyles + "' />" +
+          "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' value='Login' onsubmit='debugger;'  style='" + btnStyles + "' />" +
           "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
 
         // set registerForm styles
@@ -155,22 +163,23 @@ Copyright 3Vive Company
         registerForm.id = 'registerForm';
 
         // set the elements and styles on the form
-        registerForm.innerHTML ="<label>e-mail</label><br/>" +
-          "<input type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
+        registerForm.innerHTML = "<label>username</label><br/>" +
+          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
-          "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<label>confirm password</label><br/>" +
           "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='submit' value='Register' style='" + btnStyles + "' />";
+          "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
 
         // append the bottons and form on main-div
         div.appendChild(log);
         div.appendChild(reg);
         div.appendChild(loginForm);
         div.appendChild(registerForm);
-
+        centeredDiv.appendChild(div);
         // append main-div on the body
-        document.body.appendChild(div);
+        document.body.appendChild(centeredDiv);
         window.removeEventListener("scroll", _threeViveObject.scrollTrigger);
       }
 
@@ -181,22 +190,22 @@ Copyright 3Vive Company
 
     }
 
-      _threeViveObject.scrollUntilPopup= function() {
+    _threeViveObject.scrollUntilPopup = function() {
       window.addEventListener('scroll', _threeViveObject.scrollTrigger)
     }
 
 
-     _threeViveObject.loadAllAdRevenue = function() {
+    _threeViveObject.loadAllAdRevenue = function() {
 
     };
-     _threeViveObject.load3ViveModule = function() {
+    _threeViveObject.load3ViveModule = function() {
 
     };
-     _threeViveObject.hideArticleContent=  function() {
+    _threeViveObject.hideArticleContent = function() {
 
     };
 
-     _threeViveObject.loginUser= function() {
+    _threeViveObject.loginUser = function() {
       //A stylized dedicated login window later on but this is a test
       var jsonResponse;
       var username = prompt("Please enter your usernmae:", "");
@@ -213,7 +222,7 @@ Copyright 3Vive Company
     //http://18.219.104.16:8081/article-reg
     //Make fetch requests for all users
 
-     _threeViveObject.getUsers= function() {
+    _threeViveObject.getUsers = function() {
       fetch('http://app.3vive.com:8080/api/v1/users').then(function(response) {
         return response.json();
       }).then(function(users) {
@@ -223,17 +232,25 @@ Copyright 3Vive Company
     }
 
     //Check Partners
-     _threeViveObject.createNewUser= function(userName, password, email) {
+    _threeViveObject.createNewUser = function(userName, password, email) {
+      //debugger;
+      var userName = document.getElementById("adPassUserNameReg").value;
+      var password = document.getElementById("adPassRegPassword").value;
+      var email = document.getElementById("adPassEmailName").value;
+
+
+
       fetch('http://app.3vive.com:8080/api/v1/users/register?username=' + userName + '&password=' + password + '&email=' + email).then(function(response) {
         return response.json();
       }).then(function(newUser) {
         console.log(newUser);
+        debugger;
         _threeViveObject.newUser = newUser;
       })
     }
     //create a new user
     var thisPartnerName = "NYDN";
-     _threeViveObject.getPartnerNames = function(thisPartnerName) {
+    _threeViveObject.getPartnerNames = function(thisPartnerName) {
       fetch('http://app.3vive.com:8080/api/v1/users/register?partnerName=' + thisPartnerName).then(function(response) {
         return response.json();
       }).then(function(partners) {
@@ -244,7 +261,7 @@ Copyright 3Vive Company
 
     //Find a user passing username in as the argument
     //  var userName = "al";
-     _threeViveObject.getUserInfo = function(userName) {
+    _threeViveObject.getUserInfo = function(userName) {
       fetch('http://app.3vive.com:8080/api/v1/users/' + username).then(function(response) {
         return response.json();
       }).then(function(thisUser) {
@@ -253,7 +270,7 @@ Copyright 3Vive Company
     }
 
     // Just create a property to our library object.
-     _threeViveObject.Log = function(thingToLog) {
+    _threeViveObject.Log = function(thingToLog) {
       console.log("Log > Type of variable : " + typeof(thingToLog));
       console.log("Log > Is number : " + !isNaN(thingToLog));
       console.log("Log > Length : " + (thingToLog).length);
