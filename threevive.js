@@ -67,7 +67,7 @@ Copyright 3Vive Company
         var div = document.createElement('div'),
           centeredDiv = document.createElement('div'),
           loginForm = document.createElement('form');
-      //  registerForm
+        //  registerForm
         // set body styles
         document.body.style.color = '#fff';
         document.body.style.textTransform = 'capitalize';
@@ -76,14 +76,14 @@ Copyright 3Vive Company
 
 
 
-    centeredDiv.style.padding= '10px';
-    centeredDiv.style.position= 'fixed';
-    centeredDiv.style.zIndex= 999;
-    centeredDiv.style.left= 0;
-    centeredDiv.style.top= 0;
-    centeredDiv.style.width= '100%';
-    centeredDiv.style.height='100%';
-    centeredDiv.style.overflow= 'auto';
+        centeredDiv.style.padding = '10px';
+        centeredDiv.style.position = 'fixed';
+        centeredDiv.style.zIndex = 999;
+        centeredDiv.style.left = 0;
+        centeredDiv.style.top = 0;
+        centeredDiv.style.width = '100%';
+        centeredDiv.style.height = '100%';
+        centeredDiv.style.overflow = 'auto';
 
         // set main-div styles
         div.style.background = "rgba(0,0,0,0.5)";
@@ -92,11 +92,11 @@ Copyright 3Vive Company
         div.style.padding = '10px';
         div.style.borderRadius = '10px';
         div.style.paddingTop = '100px';
-      //  div.style.position = 'fixed';
+        //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
         div.style.width = '400px';
-        div.style.height = '570px';
+        div.style.height = '600px';
         div.style.overflow = 'auto';
 
         div.innerHTML = '<h1 style="text-align: center;color: lawngreen;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">ADPASS</h1>';
@@ -117,7 +117,7 @@ Copyright 3Vive Company
         // set loginForm styles
         loginForm.style.margin = '50px 20px 20px 20px';
         loginForm.id = 'loginForm';
-      //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
+        //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
         loginForm.innerHTML = "<label>username</label><br/>" +
           "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
@@ -127,13 +127,13 @@ Copyright 3Vive Company
           "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>" +
 
           "<label>username</label><br/>" +
-            "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
-            "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
-            "<label>password</label><br/>" +
-            "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-            "<label>confirm password</label><br/>" +
-            "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-            "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
+          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
+          "<label>password</label><br/>" +
+          "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<label>confirm password</label><br/>" +
+          "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
 
         // set registerForm styles
         // registerForm.style.margin = '50px 20px 20px 20px';
@@ -141,7 +141,7 @@ Copyright 3Vive Company
         // registerForm.id = 'registerForm';
 
         // set the elements and styles on the form
-      //  registerForm.innerHTML =
+        //  registerForm.innerHTML =
 
         // append the bottons and form on main-div
 
