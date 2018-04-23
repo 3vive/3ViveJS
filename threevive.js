@@ -51,12 +51,29 @@ Copyright 3Vive Company
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
         document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
-
+        _threeViveObject.generateButtons();
       }
 
 
 
     }
+
+
+    _threeViveObject.generateButtons = function() {
+      var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
+        btnStyles = "background:#32CD32;border:none;width:100%;color:#fff;padding:5px;margin:5px;border-radius: 15px",
+        forgetStyles = "color:#fff;",
+        startYears = 10,
+        endYears = 70,
+        i;
+      var buttonDiv = document.createElement('div');
+      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue Without Ads' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.scrollTrigger();' value='Pay With Adpass' style='" + btnStyles + "' />";
+
+      var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
+      whereToAppendButtons.appendChild(buttonDiv);
+    }
+
     _threeViveObject.scrollTrigger = function() {
 
 
@@ -210,7 +227,10 @@ Copyright 3Vive Company
 
 
 
-      fetch('http://app.3vive.com:8080/api/v1/users/register?username=' + userName + '&password=' + password + '&email=' + email).then(function(response) {
+      fetch('http://app.3vive.com:8080/api/v1/users/register', {
+        method: 'POST',
+        body: 'username=' + userName + '&password=' + password + '&email=' + email
+      }).then(function(response) {
         return response.json();
       }).then(function(newUser) {
         console.log(newUser);
@@ -259,7 +279,9 @@ Copyright 3Vive Company
 
 })(window); // We send the window variable withing our function
 //threeVive.checkCookieState();
-threeVive.scrollTrigger();
+document.addEventListener("DOMContentLoaded", function(event) {
+  threeVive.generateButtons();
+});
 
 // Then we can call our custom function using
 //threeVive.log(["test1","test2"]);
