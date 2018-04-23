@@ -221,15 +221,17 @@ Copyright 3Vive Company
     //Check Partners
     _threeViveObject.createNewUser = function(userName, password, email) {
       //debugger;
-      var userName = document.getElementById("adPassUserNameReg").value;
-      var password = document.getElementById("adPassRegPassword").value;
-      var email = document.getElementById("adPassEmailName").value;
 
+      var payload = {};
+      payload.userName = document.getElementById("adPassUserNameReg").value;
+      payload.password = document.getElementById("adPassRegPassword").value;
+      payload.email = document.getElementById("adPassEmailName").value;
 
+      JSON.stringify(payload);
 
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         method: 'POST',
-        body: 'username=' + userName + '&password=' + password + '&email=' + email
+        body: payload
       }).then(function(response) {
         return response.json();
       }).then(function(newUser) {
