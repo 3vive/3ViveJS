@@ -36,7 +36,7 @@ Copyright 3Vive Company
       //Check if cookie has value if it does pass it to the registerServiceWorker
 
       //read that cookie and pass it back
-      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)test2\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 
       if (threeViveCookieValue == true) {
@@ -50,7 +50,7 @@ Copyright 3Vive Company
       } else if (threeViveCookieValue == false) {
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
-        document.cookie = "threeViveCookie=Test_CookiandomStringOfChars"; // this is we push it from the parent to the iframe
+        document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
 
       }
 
@@ -66,10 +66,7 @@ Copyright 3Vive Company
         // create the elements
         var div = document.createElement('div'),
           centeredDiv = document.createElement('div'),
-          log = document.createElement('div'),
-          reg = document.createElement('div'),
-          loginForm = document.createElement('form'),
-          registerForm = document.createElement('form');
+          loginForm = document.createElement('form');
       //  registerForm
         // set body styles
         document.body.style.color = '#fff';
@@ -81,7 +78,7 @@ Copyright 3Vive Company
 
     centeredDiv.style.padding= '10px';
     centeredDiv.style.position= 'fixed';
-    centeredDiv.style.zIndex= 1;
+    centeredDiv.style.zIndex= 999;
     centeredDiv.style.left= 0;
     centeredDiv.style.top= 0;
     centeredDiv.style.width= '100%';
@@ -102,40 +99,12 @@ Copyright 3Vive Company
         div.style.height = '570px';
         div.style.overflow = 'auto';
 
+        div.innerHTML = '<h1 style="text-align: center;color: lawngreen;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">ADPASS</h1>';
 
 
-
-        log.style.display = 'inline-block';
-        log.style.color = '#fff';
-        log.style.margin = '5px';
-        log.style.cursor = 'pointer';
-        log.id = 'login';
-        log.innerHTML = 'login';
-        reg.style.display = 'inline-block';
-        reg.style.color = '#888';
-        reg.style.margin = '5px';
-        reg.style.cursor = 'pointer';
-        reg.id = 'register';
-        reg.innerHTML = 'register';
-
-        // hide register form and show login form
-        reg.onclick = function() {
-          this.style.color = '#fff';
-          log.style.color = '#888';
-          loginForm.style.display = 'none';
-          registerForm.style.display = 'block';
-        };
 
         // hide login form and show register form
-        log.onclick = function() {
-          this.style.color = '#fff';
-          reg.style.color = '#888';
-          loginForm.style.display = 'block';
-          registerForm.style.display = 'none';
 
-          //  debugger;
-
-        };
 
         // create some variables for styling
         var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
@@ -148,35 +117,36 @@ Copyright 3Vive Company
         // set loginForm styles
         loginForm.style.margin = '50px 20px 20px 20px';
         loginForm.id = 'loginForm';
-        loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
+      //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
         loginForm.innerHTML = "<label>username</label><br/>" +
           "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
           "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' value='Login' onsubmit='debugger;'  style='" + btnStyles + "' />" +
-          "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
+          "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>" +
+
+          "<label>username</label><br/>" +
+            "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
+            "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
+            "<label>password</label><br/>" +
+            "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+            "<label>confirm password</label><br/>" +
+            "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+            "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
 
         // set registerForm styles
-        registerForm.style.margin = '50px 20px 20px 20px';
-        registerForm.style.display = 'none';
-        registerForm.id = 'registerForm';
+        // registerForm.style.margin = '50px 20px 20px 20px';
+        // registerForm.style.display = 'none';
+        // registerForm.id = 'registerForm';
 
         // set the elements and styles on the form
-        registerForm.innerHTML = "<label>username</label><br/>" +
-          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
-          "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
-          "<label>password</label><br/>" +
-          "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<label>confirm password</label><br/>" +
-          "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
+      //  registerForm.innerHTML =
 
         // append the bottons and form on main-div
-        div.appendChild(log);
-        div.appendChild(reg);
+
         div.appendChild(loginForm);
-        div.appendChild(registerForm);
+
         centeredDiv.appendChild(div);
         // append main-div on the body
         document.body.appendChild(centeredDiv);
@@ -285,6 +255,8 @@ Copyright 3Vive Company
   if (typeof(window.threeVive) === 'undefined') {
     window.threeVive = threeVive();
   }
+
+
 })(window); // We send the window variable withing our function
 //threeVive.checkCookieState();
 threeVive.scrollTrigger();
