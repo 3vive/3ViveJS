@@ -227,11 +227,14 @@ Copyright 3Vive Company
       payload.password = document.getElementById("adPassRegPassword").value;
       payload.email = document.getElementById("adPassEmailName").value;
 
-      JSON.stringify(payload);
+      //JSON.stringify(payload);
       console.log(payload);
+      var data = new Formdata();
+      data.append("json",JSON.stringify(payload); )
+        console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         method: 'POST',
-        body: payload
+        body: data
       }).then(function(response) {
         return response.json();
       }).then(function(newUser) {
