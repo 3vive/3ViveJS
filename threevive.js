@@ -223,7 +223,7 @@ Copyright 3Vive Company
       //debugger;
 
       var payload = {};
-      payload.userName = document.getElementById("adPassUserNameReg").value;
+      payload.username = document.getElementById("adPassUserNameReg").value;
       payload.password = document.getElementById("adPassRegPassword").value;
       payload.email = document.getElementById("adPassEmailName").value;
 
