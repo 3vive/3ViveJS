@@ -233,6 +233,10 @@ Copyright 3Vive Company
       data.append("json",JSON.stringify(payload); )
         console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
+        headers:{
+          'Accept' 'application/json',
+          'Content-Type': 'application/json'
+        },
         method: 'POST',
         body: data
       }).then(function(response) {
