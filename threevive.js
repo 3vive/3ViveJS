@@ -229,8 +229,9 @@ Copyright 3Vive Company
 
       //JSON.stringify(payload);
       console.log(payload);
-      var data = new FormData();
-      data.append("json",JSON.stringify(payload); )
+    //  var data = new FormData();
+      //data.append("json",JSON.stringify(payload); )
+
         console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         headers:{
@@ -238,7 +239,7 @@ Copyright 3Vive Company
           'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: data
+        body: JSON.stringify(payload)
       }).then(function(response) {
         return response.json();
       }).then(function(newUser) {
