@@ -67,8 +67,8 @@ Copyright 3Vive Company
         endYears = 70,
         i;
       var buttonDiv = document.createElement('div');
-      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue Without Ads' style='" + btnStyles + "' />" +
-        "<input type='button' onclick='threeVive.scrollTrigger();' value='Pay With Adpass' style='" + btnStyles + "' />";
+      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue With Ads' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.scrollTrigger();' value='Register with Adpass' style='" + btnStyles + "' />";
 
       var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
       whereToAppendButtons.appendChild(buttonDiv);
@@ -137,7 +137,7 @@ Copyright 3Vive Company
         //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
         loginForm.innerHTML = "<label>username</label><br/>" +
-          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
           "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' value='Login' onsubmit='debugger;'  style='" + btnStyles + "' />" +
@@ -228,7 +228,7 @@ Copyright 3Vive Company
       payload.email = document.getElementById("adPassEmailName").value;
 
       JSON.stringify(payload);
-
+      console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         method: 'POST',
         body: payload
