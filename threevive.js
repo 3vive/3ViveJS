@@ -229,7 +229,7 @@ Copyright 3Vive Company
 
       //JSON.stringify(payload);
       console.log(payload);
-      var data = new Formdata();
+      var data = new FormData();
       data.append("json",JSON.stringify(payload); )
         console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
