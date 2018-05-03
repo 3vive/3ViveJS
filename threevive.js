@@ -140,7 +140,7 @@ Copyright 3Vive Company
           "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
           "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='button' value='Login' onsubmit='debugger;'  style='" + btnStyles + "' />" +
+          "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" +
           "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>" +
 
           "<label>username</label><br/>" +
@@ -192,20 +192,7 @@ Copyright 3Vive Company
 
     };
 
-    _threeViveObject.loginUser = function() {
-      //A stylized dedicated login window later on but this is a test
-      var jsonResponse;
-      var username = prompt("Please enter your usernmae:", "");
 
-      if (username != null || username == "") {
-        jsonResponse = _threeViveObject.getUserInfo(username); //i.e Al
-      }
-
-
-      //grab cookie setter from jsonRepsonse and set it below
-      document.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";
-      window.reload();
-    }
     //http://18.219.104.16:8081/article-reg
     //Make fetch requests for all users
 
@@ -235,7 +222,7 @@ Copyright 3Vive Company
         console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         headers:{
-          'Accept' 'application/json',
+        //  'Accept: application/json',
           'Content-Type': 'application/json'
         },
         method: 'POST',
@@ -261,10 +248,43 @@ Copyright 3Vive Company
 
     //Find a user passing username in as the argument
     //  var userName = "al";
-    _threeViveObject.getUserInfo = function(userName) {
-      fetch('http://app.3vive.com:8080/api/v1/users/' + username).then(function(response) {
-        return response.json();
-      }).then(function(thisUser) {
+
+
+
+    _threeViveObject.loginUser = function() {
+
+
+
+      var payload = {};
+      payload.username =  document.getElementById("adPassUserNameLog").value;
+      payload.password =  document.getElementById("adPassUsernamePassword").value;
+
+
+
+      if ((username != null || username == "") && (password != null || password == "") ) {
+        fetch('http://app.3vive.com:8080/api/Login', {
+          headers:{
+          //  'Accept: application/json',
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(payload)
+        }).then(function(response) {
+          return response.json();
+        }).then(function(loginUser) {
+          console.log(loginUser);
+          debugger;
+          _threeViveObject.newUser = loginUser;
+        })
+      }
+
+
+
+
+}
+
+    _threeViveObject.getUserInfo = function(username, password) {
+      fetch('http://app.3vive.com:8080/api/v1/users/' + username).then(function(thisUser) {
         console.log(thisUser);
       })
     }
