@@ -222,7 +222,7 @@ Copyright 3Vive Company
         console.log(payload);
       fetch('http://app.3vive.com:8080/api/v1/users/register', {
         headers:{
-        //  'Accept: application/json',
+          'Accept: application/json',
           'Content-Type': 'application/json'
         },
         method: 'POST',
@@ -264,7 +264,7 @@ Copyright 3Vive Company
       if ((username != null || username == "") && (password != null || password == "") ) {
         fetch('http://app.3vive.com:8080/api/Login', {
           headers:{
-          //  'Accept: application/json',
+             Accept: 'application/json',
             'Content-Type': 'application/json'
           },
           method: 'POST',
