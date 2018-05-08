@@ -9,8 +9,13 @@ Copyright 3Vive Company
   // This function will contain all our code
   function threeVive() {
     var _threeViveObject = {};
-
-
+var hostUrl;
+if (location.hostname === "localhost"){
+  hostUrl = "localhost:8080"
+}
+else{
+  hostUrl = "http://app.3vive.com:8080";
+}
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -197,7 +202,7 @@ Copyright 3Vive Company
     //Make fetch requests for all users
 
     _threeViveObject.getUsers = function() {
-      fetch('http://app.3vive.com:8080/api/v1/users').then(function(response) {
+      fetch( hostUrl + '/api/v1/users').then(function(response) {
         return response.json();
       }).then(function(users) {
         console.log(users);
@@ -220,7 +225,7 @@ Copyright 3Vive Company
       //data.append("json",JSON.stringify(payload); )
 
         console.log(payload);
-      fetch('http://app.3vive.com:8080/api/v1/users/register', {
+      fetch(hostUrl + '/api/v1/users/register', {
         headers:{
           'Accept: application/json',
           'Content-Type': 'application/json'
@@ -238,7 +243,7 @@ Copyright 3Vive Company
     //create a new user
     var thisPartnerName = "NYDN";
     _threeViveObject.getPartnerNames = function(thisPartnerName) {
-      fetch('http://app.3vive.com:8080/api/v1/users/register?partnerName=' + thisPartnerName).then(function(response) {
+      fetch(hostUrl + '/api/v1/users/register?partnerName=' + thisPartnerName).then(function(response) {
         return response.json();
       }).then(function(partners) {
         console.log(partners);
@@ -262,9 +267,9 @@ Copyright 3Vive Company
 
 
       if ((username != null || username == "") && (password != null || password == "") ) {
-        fetch('http://app.3vive.com:8080/api/Login', {
+        fetch(hostUrl + '/api/Login', {
           headers:{
-             Accept: 'application/json',
+             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           method: 'POST',
@@ -284,7 +289,7 @@ Copyright 3Vive Company
 }
 
     _threeViveObject.getUserInfo = function(username, password) {
-      fetch('http://app.3vive.com:8080/api/v1/users/' + username).then(function(thisUser) {
+      fetch(hostUrl + '/api/v1/users/' + username).then(function(thisUser) {
         console.log(thisUser);
       })
     }
