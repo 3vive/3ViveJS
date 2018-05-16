@@ -9,13 +9,13 @@ Copyright 3Vive Company
   // This function will contain all our code
   function threeVive() {
     var _threeViveObject = {};
-var hostUrl;
-if (location.hostname === "localhost"){
-  hostUrl = "localhost:8080"
-}
-else{
-  hostUrl = "http://app.3vive.com:8080";
-}
+var hostUrl = 'http://app.3vive.com:8080' ;
+// if (location.hostname === "localhost"){
+//   hostUrl = "localhost:8080"
+// }
+// else{
+//   hostUrl = "http://app.3vive.com:8080";
+// }
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
