@@ -227,7 +227,7 @@ else{
         console.log(payload);
       fetch(hostUrl + '/api/v1/users/register', {
         headers:{
-          'Accept: application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         method: 'POST',
