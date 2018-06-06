@@ -149,12 +149,12 @@ else{
           "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>" +
 
           "<label>username</label><br/>" +
-          "<input id='adPassUserNameReg' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
-          "<input id='adPassEmailName' type='email' placeholder='your email' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
           "<label>password</label><br/>" +
-          "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<label>confirm password</label><br/>" +
-          "<input id='adPassRegPasswor2d' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' />";
 
         // set registerForm styles
