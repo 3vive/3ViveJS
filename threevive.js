@@ -9,7 +9,7 @@ Copyright 3Vive Company
   // This function will contain all our code
   function threeVive() {
     var _threeViveObject = {};
-var hostUrl = 'http://app.3vive.com:8080' ;
+var hostUrl;// = 'http://app.3vive.com:8080' ;
 if (location.hostname === "localhost"){
   hostUrl = "localhost:8080"
 }
@@ -154,8 +154,8 @@ else{
           "<label>password</label><br/>" +
           "<input id='adPassRegPassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<label>confirm password</label><br/>" +
-          "<input type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='button' onclick='threeVive.createNewUser();' value='Register' style='" + btnStyles + "' />";
+          "<input id='adPassRegPasswor2d' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' />";
 
         // set registerForm styles
         // registerForm.style.margin = '50px 20px 20px 20px';
@@ -197,7 +197,64 @@ else{
 
     };
 
+    _threeViveObject.validateForm = function(){
 
+    var usr = document.getElementById('adPassUserNameReg');
+    var pwd1 = document.getElementById('adPassRegPassword');
+    var pwd2 = document.getElementById('adPassRegPassword2');
+
+        if(usr.value == "") {
+          alert("Error: Username cannot be blank!");
+          usr.focus();
+          return false;
+        }
+        re = /^\w+$/;
+        if(!re.test(usr.value)) {
+          alert("Error: Username must contain only letters, numbers and underscores!");
+        usr.focus();
+          return false;
+        }
+
+        if(pwd1.value != "" && pwd1.value == pwd2.value) {
+          if(pwd1.value.length < 6) {
+            alert("Error: Password must contain at least six characters!");
+            pwd1.focus();
+            return false;
+          }
+          if(pwd1.value == usr.value) {
+            alert("Error: Password must be different from Username!");
+            pwd1.focus();
+            return false;
+          }
+          re = /[0-9]/;
+          if(!re.test(pwd1.value)) {
+            alert("Error: password must contain at least one number (0-9)!");
+            pwd1.focus();
+            return false;
+          }
+          re = /[a-z]/;
+          if(!re.test(pwd1.value)) {
+            alert("Error: password must contain at least one lowercase letter (a-z)!");
+            pwd1.focus();
+            return false;
+          }
+          re = /[A-Z]/;
+          if(!re.test(pwd1.value)) {
+            alert("Error: password must contain at least one uppercase letter (A-Z)!");
+            pwd1.focus();
+            return false;
+          }
+        }
+
+
+          _threeViveObject.createNewUser();
+
+      //  alert("You entered a valid password: " + pwd1.value);
+        return true;
+
+
+
+    }
     //http://18.219.104.16:8081/article-reg
     //Make fetch requests for all users
 
