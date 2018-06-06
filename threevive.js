@@ -88,7 +88,11 @@ else{
         // create the elements
         var div = document.createElement('div'),
           centeredDiv = document.createElement('div'),
-          loginForm = document.createElement('form');
+          leftLoginDiv = document.createElement('div'),
+          rightLoginDiv = document.createElement('div'),
+          loginForm = document.createElement('form'),
+          registrationForm = document.createElement('form');
+
         //  registerForm
         // set body styles
         document.body.style.color = '#fff';
@@ -108,20 +112,24 @@ else{
         centeredDiv.style.overflow = 'auto';
 
         // set main-div styles
-        div.style.background = "rgba(255, 255, 255, 0.5)";
+        div.style.background = "rgba(255, 255, 255, 0.95)";
         div.style.width = '300px';
         div.style.margin = '30px auto';
         div.style.padding = '10px';
         div.style.borderRadius = '10px';
+        div.style.borderTop = "20px green solid";
+        div.style.borderBottom = "20px green solid";
         div.style.paddingTop = '100px';
+        div.style.textAlign = 'center';
         //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
-        div.style.width = '400px';
+        div.style.width = '600px';
         div.style.height = '600px';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<h1 style="text-align: center;color: lawngreen;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1></br> <p>No Ads. No Ad Tracking</p>';
+        div.innerHTML = '<h1 style="text-align: center;color: green;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1> <h3 style="color:green">No Ads. No Ad Tracking</h3>';
+
 
 
 
@@ -129,9 +137,10 @@ else{
 
 
         // create some variables for styling
-        var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
+        var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#000;padding:5px;margin:5px;",
           btnStyles = "background:#32CD32;border:none;width:100%;color:#fff;padding:5px;margin:5px;border-radius: 15px",
           forgetStyles = "color:#fff;",
+          labelStyles = "color: black; width: 100%",
           startYears = 10,
           endYears = 70,
           i;
@@ -141,22 +150,28 @@ else{
         loginForm.id = 'loginForm';
         //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
-        loginForm.innerHTML = "<label>username</label><br/>" +
+        loginForm.innerHTML = "<label style='" + labelStyles + "'>username</label><br/>" +
           "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
-          "<label>password</label><br/>" +
+          "<label style='" + labelStyles + "'>password</label><br/>" +
           "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" +
-          "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>" +
+          "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
 
-          "<label>username</label><br/>" +
-          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label>e-mail</label><br/>" +
-          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
-          "<label>password</label><br/>" +
-          "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<label>confirm password</label><br/>" +
-          "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' />";
 
+
+
+          registrationForm.innerHTML =  "</br><label style='" + labelStyles + "' >username</label><br/>" +
+                "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+                "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+                "<label style='" + labelStyles + "'>password</label><br/>" +
+                "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+                "<label style='" + labelStyles + "'>confirm password</label><br/>" +
+                "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+                "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' />";
+
+
+
+          rightLoginDiv.innerHTML = '<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>';
         // set registerForm styles
         // registerForm.style.margin = '50px 20px 20px 20px';
         // registerForm.style.display = 'none';
@@ -166,9 +181,18 @@ else{
         //  registerForm.innerHTML =
 
         // append the bottons and form on main-div
+        leftLoginDiv.style.float = "left";
+        leftLoginDiv.style.borderRight = "2px green solid";
+        rightLoginDiv.style.float = 'right';
 
-        div.appendChild(loginForm);
 
+
+
+
+        leftLoginDiv.appendChild(loginForm);
+        div.appendChild(leftLoginDiv);
+        div.appendChild(rightLoginDiv);
+        div.appendChild(registrationForm);
         centeredDiv.appendChild(div);
         // append main-div on the body
         document.body.appendChild(centeredDiv);
