@@ -108,7 +108,7 @@ else{
         centeredDiv.style.overflow = 'auto';
 
         // set main-div styles
-        div.style.background = "rgba(0,0,0,0.5)";
+        div.style.background = "rgba(255, 255, 255, 0.5)";
         div.style.width = '300px';
         div.style.margin = '30px auto';
         div.style.padding = '10px';
@@ -121,7 +121,7 @@ else{
         div.style.height = '600px';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<h1 style="text-align: center;color: lawngreen;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">ADPASS</h1>';
+        div.innerHTML = '<h1 style="text-align: center;color: lawngreen;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1></br> <p>No Ads. No Ad Tracking</p>';
 
 
 
