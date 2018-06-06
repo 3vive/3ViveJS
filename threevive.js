@@ -9,13 +9,12 @@ Copyright 3Vive Company
   // This function will contain all our code
   function threeVive() {
     var _threeViveObject = {};
-var hostUrl;// = 'http://app.3vive.com:8080' ;
-if (location.hostname === "localhost"){
-  hostUrl = "localhost:8080"
-}
-else{
-  hostUrl = "http://app.3vive.com:8080";
-}
+    var hostUrl; // = 'http://app.3vive.com:8080' ;
+    if (location.hostname === "localhost") {
+      hostUrl = "localhost:8080"
+    } else {
+      hostUrl = "http://app.3vive.com:8080";
+    }
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -102,6 +101,8 @@ else{
 
 
 
+
+
         centeredDiv.style.padding = '10px';
         centeredDiv.style.position = 'fixed';
         centeredDiv.style.zIndex = 999;
@@ -111,6 +112,8 @@ else{
         centeredDiv.style.height = '100%';
         centeredDiv.style.overflow = 'auto';
 
+
+        div.id = "popUpAdPassDiv";
         // set main-div styles
         div.style.background = "rgba(255, 255, 255, 0.95)";
         div.style.width = '300px';
@@ -119,7 +122,7 @@ else{
         div.style.borderRadius = '10px';
         div.style.borderTop = "20px green solid";
         div.style.borderBottom = "20px green solid";
-        div.style.paddingTop = '100px';
+        div.style.paddingTop = '20px';
         div.style.textAlign = 'center';
         //  div.style.position = 'fixed';
         div.style.left = 0;
@@ -128,7 +131,7 @@ else{
         div.style.height = '600px';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<h1 style="text-align: center;color: green;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1> <h3 style="color:green">No Ads. No Ad Tracking</h3>';
+        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()"> Close</button> <h1 style="text-align: center;color: green;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1> <h3 style="color:green">No Ads. No Ad Tracking</h3>';
 
 
 
@@ -160,18 +163,18 @@ else{
 
 
 
-          registrationForm.innerHTML =  "</br><label style='" + labelStyles + "' >username</label><br/>" +
-                "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
-                "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
-                "<label style='" + labelStyles + "'>password</label><br/>" +
-                "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-                "<label style='" + labelStyles + "'>confirm password</label><br/>" +
-                "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-                "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' />";
+        registrationForm.innerHTML = "<a style='width: 100%;' onclick='threeVive.showReg()' href='javascript:void(0);' >Create a new Account </a> </br> <div id='hiddenRegTab' style='display:none'> <label style='" + labelStyles + "' >username</label><br/>" +
+          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>password</label><br/>" +
+          "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>confirm password</label><br/>" +
+          "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
 
 
 
-          rightLoginDiv.innerHTML = '<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>';
+        rightLoginDiv.innerHTML = '<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>';
         // set registerForm styles
         // registerForm.style.margin = '50px 20px 20px 20px';
         // registerForm.style.display = 'none';
@@ -221,60 +224,70 @@ else{
 
     };
 
-    _threeViveObject.validateForm = function(){
+    _threeViveObject.showReg = function() {
 
-    var usr = document.getElementById('adPassUserNameReg');
-    var pwd1 = document.getElementById('adPassRegPassword');
-    var pwd2 = document.getElementById('adPassRegPassword2');
+      document.getElementById('hiddenRegTab').style.display = "";
+    }
 
-        if(usr.value == "") {
-          alert("Error: Username cannot be blank!");
-          usr.focus();
-          return false;
-        }
-        re = /^\w+$/;
-        if(!re.test(usr.value)) {
-          alert("Error: Username must contain only letters, numbers and underscores!");
+    _threeViveObject.closePopup = function() {
+       var element = document.getElementById('popUpAdPassDiv');
+
+       element.parentNode.removeChild(element);
+    }
+    _threeViveObject.validateForm = function() {
+
+      var usr = document.getElementById('adPassUserNameReg');
+      var pwd1 = document.getElementById('adPassRegPassword');
+      var pwd2 = document.getElementById('adPassRegPassword2');
+
+      if (usr.value == "") {
+        alert("Error: Username cannot be blank!");
         usr.focus();
+        return false;
+      }
+      re = /^\w+$/;
+      if (!re.test(usr.value)) {
+        alert("Error: Username must contain only letters, numbers and underscores!");
+        usr.focus();
+        return false;
+      }
+
+      if (pwd1.value != "" && pwd1.value == pwd2.value) {
+        if (pwd1.value.length < 6) {
+          alert("Error: Password must contain at least six characters!");
+          pwd1.focus();
           return false;
         }
-
-        if(pwd1.value != "" && pwd1.value == pwd2.value) {
-          if(pwd1.value.length < 6) {
-            alert("Error: Password must contain at least six characters!");
-            pwd1.focus();
-            return false;
-          }
-          if(pwd1.value == usr.value) {
-            alert("Error: Password must be different from Username!");
-            pwd1.focus();
-            return false;
-          }
-          re = /[0-9]/;
-          if(!re.test(pwd1.value)) {
-            alert("Error: password must contain at least one number (0-9)!");
-            pwd1.focus();
-            return false;
-          }
-          re = /[a-z]/;
-          if(!re.test(pwd1.value)) {
-            alert("Error: password must contain at least one lowercase letter (a-z)!");
-            pwd1.focus();
-            return false;
-          }
-          re = /[A-Z]/;
-          if(!re.test(pwd1.value)) {
-            alert("Error: password must contain at least one uppercase letter (A-Z)!");
-            pwd1.focus();
-            return false;
-          }
+        if (pwd1.value == usr.value) {
+          alert("Error: Password must be different from Username!");
+          pwd1.focus();
+          return false;
         }
+        re = /[0-9]/;
+        if (!re.test(pwd1.value)) {
+          alert("Error: password must contain at least one number (0-9)!");
+          pwd1.focus();
+          return false;
+        }
+        re = /[a-z]/;
+        if (!re.test(pwd1.value)) {
+          alert("Error: password must contain at least one lowercase letter (a-z)!");
+          pwd1.focus();
+          return false;
+        }
+        re = /[A-Z]/;
+        if (!re.test(pwd1.value)) {
+          alert("Error: password must contain at least one uppercase letter (A-Z)!");
+          pwd1.focus();
+          return false;
+        }
+      }
 
 
-          _threeViveObject.createNewUser();
+      _threeViveObject.createNewUser();
 
       //  alert("You entered a valid password: " + pwd1.value);
-        return true;
+      return true;
 
 
 
@@ -283,7 +296,7 @@ else{
     //Make fetch requests for all users
 
     _threeViveObject.getUsers = function() {
-      fetch( hostUrl + '/api/v1/users').then(function(response) {
+      fetch(hostUrl + '/api/v1/users').then(function(response) {
         return response.json();
       }).then(function(users) {
         console.log(users);
@@ -302,12 +315,12 @@ else{
 
       //JSON.stringify(payload);
       console.log(payload);
-    //  var data = new FormData();
+      //  var data = new FormData();
       //data.append("json",JSON.stringify(payload); )
 
-        console.log(payload);
+      console.log(payload);
       fetch(hostUrl + '/api/v1/users/register', {
-        headers:{
+        headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -342,15 +355,15 @@ else{
 
 
       var payload = {};
-      payload.username =  document.getElementById("adPassUserNameLog").value;
-      payload.password =  document.getElementById("adPassUsernamePassword").value;
+      payload.username = document.getElementById("adPassUserNameLog").value;
+      payload.password = document.getElementById("adPassUsernamePassword").value;
 
 
 
-      if ((username != null || username == "") && (password != null || password == "") ) {
+      if ((username != null || username == "") && (password != null || password == "")) {
         fetch(hostUrl + '/api/Login', {
-          headers:{
-             'Accept': 'application/json',
+          headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           method: 'POST',
@@ -367,7 +380,7 @@ else{
 
 
 
-}
+    }
 
     _threeViveObject.getUserInfo = function(username, password) {
       fetch(hostUrl + '/api/v1/users/' + username).then(function(thisUser) {
