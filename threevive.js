@@ -361,10 +361,11 @@ Copyright 3Vive Company
 
 
       if ((username != null || username == "") && (password != null || password == "")) {
-        fetch(hostUrl + '/api/Login', {
+        fetch(hostUrl + '/api/v1/users/user/' + payload.username, {
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password)
           },
           method: 'POST',
           body: JSON.stringify(payload)
