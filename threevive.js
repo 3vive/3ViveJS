@@ -322,7 +322,10 @@ Copyright 3Vive Company
       fetch(hostUrl + '/api/v1/users/register', {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+          "Access-Control-Allow-Credentials": "true"
         },
         method: 'POST',
         body: JSON.stringify(payload)
@@ -365,6 +368,9 @@ Copyright 3Vive Company
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            "Access-Control-Allow-Credentials": "true",
             'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password)
           },
           method: 'POST',
