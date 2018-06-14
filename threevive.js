@@ -364,26 +364,27 @@ if (location.hostname === "localhost") {
 
 
 
-      if ((username != null || username == "") && (password != null || password == "")) {
-        fetch(hostUrl + '/api/v1/users/user/' + payload.username, {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-            "Access-Control-Allow-Credentials": "true",
-            'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password)
-          },
-          method: 'POST',
-          body: JSON.stringify(payload)
-        }).then(function(response) {
-          return response.json();
-        }).then(function(loginUser) {
-          console.log(loginUser);
-          debugger;
-          _threeViveObject.newUser = loginUser;
-        })
-      }
+    if ((payload.username != null || payload.username != "") && (payload.password != null || payload.password != "")) {
+                var api = hostUrl + '/api/v1/users/user/' + payload.username;
+
+                fetch(api, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+
+                    },
+                    credentials: "include",
+                    method: 'GET'
+                }).then(function (response) {
+                    alert(response);
+                    return response.json();
+                }).then(
+                    function (data) {
+                        console.log(data);
+                    }
+                )
+            }
 
 
 
