@@ -246,7 +246,7 @@ if (location.hostname === "localhost") {
         usr.focus();
         return false;
       }
-      re = /^\w+$/;
+      var re = /^\w+$/;
       if (!re.test(usr.value)) {
         alert("Error: Username must contain only letters, numbers and underscores!");
         usr.focus();
