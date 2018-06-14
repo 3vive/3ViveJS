@@ -170,7 +170,7 @@ if (location.hostname === "localhost") {
           "<label style='" + labelStyles + "'>password</label><br/>" +
           "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<label style='" + labelStyles + "'>confirm password</label><br/>" +
-          "<input id='adPassRegPasswor2d' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
 
 
