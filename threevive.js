@@ -3,7 +3,7 @@ Copyright 3Vive Company
 *****/
 var hostUrl; // = 'http://app.3vive.com:8080' ;
 if (location.hostname === "localhost") {
-  hostUrl = "localhost:8080"
+  hostUrl = "http://localhost:8080"
 } else {
   hostUrl = "http://app.3vive.com:8080";
 }
