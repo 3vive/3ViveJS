@@ -66,15 +66,16 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.generateButtons = function() {
       var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
-        btnStyles = "background:#32CD32;border:none;width:100%;color:#fff;padding:5px;margin:5px;border-radius: 15px",
+        btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;font-style: italic;",
+        btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
         forgetStyles = "color:#fff;",
         startYears = 10,
         endYears = 70,
         i;
       var buttonDiv = document.createElement('div');
-      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue With Ads' style='" + btnStyles + "' />" +
-        "<input type='button' onclick='threeVive.scrollTrigger();' value='Register with Adpass' style='" + btnStyles + "' />";
-
+      buttonDiv.style.textAlign = "center";
+      buttonDiv.innerHTML =   "<input type='button' onclick='threeVive.scrollTrigger();' value='&#8680; Ad Pass' style='" + btnStyles + "' />"
+       +"<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
       var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
       whereToAppendButtons.appendChild(buttonDiv);
     }
@@ -116,23 +117,23 @@ if (location.hostname === "localhost") {
 
         div.id = "popUpAdPassDiv";
         // set main-div styles
-        div.style.background = "rgba(255, 255, 255, 0.95)";
+        div.style.background = "#129979";
         div.style.width = '300px';
         div.style.margin = '30px auto';
         div.style.padding = '10px';
         div.style.borderRadius = '10px';
-        div.style.borderTop = "20px green solid";
-        div.style.borderBottom = "20px green solid";
+        div.style.borderTop = "0px #129979 solid";
+        div.style.borderBottom = "0px #129979 solid";
         div.style.paddingTop = '20px';
         div.style.textAlign = 'center';
         //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
-        div.style.width = '600px';
+        div.style.width = '270px';
         div.style.height = '600px';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()"> Close</button> <h1 style="text-align: center;color: green;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;">Sign Up for AdPASS</h1> <h3 style="color:green">No Ads. No Ad Tracking</h3>';
+        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 15px; padding-bottom:0;">&#8680; Ad Pass</h1>';
 
 
 
@@ -141,10 +142,10 @@ if (location.hostname === "localhost") {
 
 
         // create some variables for styling
-        var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#000;padding:5px;margin:5px;",
-          btnStyles = "background:#32CD32;border:none;width:100%;color:#fff;padding:5px;margin:5px;border-radius: 15px",
+        var inputStyles = "background:none;border: 1px solid white;width:100%;color:#fff;padding:5px;margin:5px;",
+          btnStyles = "background:#fff;border:none;width:100%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
           forgetStyles = "color:#fff;",
-          labelStyles = "color: black; width: 100%",
+          labelStyles = "color: white; width: 100%;text-align: left;",
           startYears = 10,
           endYears = 70,
           i;
@@ -186,7 +187,7 @@ if (location.hostname === "localhost") {
 
         // append the bottons and form on main-div
         leftLoginDiv.style.float = "left";
-        leftLoginDiv.style.borderRight = "2px green solid";
+        leftLoginDiv.style.borderRight = "2px #129979 solid";
         rightLoginDiv.style.float = 'right';
 
 
