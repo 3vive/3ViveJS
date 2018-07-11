@@ -49,7 +49,7 @@ if (location.hostname === "localhost") {
         _threeViveObject.loadAllAdRevenue();
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
-
+        return true;
 
 
       } else if (threeViveCookieValue == false) {
@@ -57,6 +57,7 @@ if (location.hostname === "localhost") {
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
         document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
         _threeViveObject.generateButtons();
+        return false;
       }
 
 
@@ -74,7 +75,7 @@ if (location.hostname === "localhost") {
         i;
       var buttonDiv = document.createElement('div');
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML =   "<input type='button' onclick='threeVive.scrollTrigger();' value='&#8680; Ad Pass' style='" + btnStyles + "' />"
+      buttonDiv.innerHTML =   "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />"
        +"<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
       var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
       whereToAppendButtons.appendChild(buttonDiv);
@@ -129,11 +130,11 @@ if (location.hostname === "localhost") {
         //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
-        div.style.width = '270px';
-        div.style.height = '600px';
+        div.style.width = '40%';
+        div.style.height = '65%';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: "Helvetica Neue", sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 15px; padding-bottom:0;">&#8680; Ad Pass</h1>';
+        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
 
 
 
@@ -165,7 +166,7 @@ if (location.hostname === "localhost") {
 
 
 
-        registrationForm.innerHTML = "<a style='width: 100%;' onclick='threeVive.showReg()' href='javascript:void(0);' >Create a new Account </a> </br> <div id='hiddenRegTab' style='display:none'> <label style='" + labelStyles + "' >username</label><br/>" +
+        registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
           "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
           "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
           "<label style='" + labelStyles + "'>password</label><br/>" +
@@ -186,18 +187,23 @@ if (location.hostname === "localhost") {
         //  registerForm.innerHTML =
 
         // append the bottons and form on main-div
-        leftLoginDiv.style.float = "left";
+
         leftLoginDiv.style.borderRight = "2px #129979 solid";
-        rightLoginDiv.style.float = 'right';
 
 
 
 
+        //put real values from the cookie here
+        if (true) {
+          leftLoginDiv.appendChild(loginForm);
+          div.appendChild(leftLoginDiv);
+          div.appendChild(rightLoginDiv);
+        }
+        else {
+          div.appendChild(registrationForm);
 
-        leftLoginDiv.appendChild(loginForm);
-        div.appendChild(leftLoginDiv);
-        div.appendChild(rightLoginDiv);
-        div.appendChild(registrationForm);
+        }
+
         centeredDiv.appendChild(div);
         // append main-div on the body
         document.body.appendChild(centeredDiv);
