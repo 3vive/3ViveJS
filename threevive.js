@@ -499,6 +499,15 @@ if (location.hostname === "localhost") {
       })
     }
 
+    _threeViveObject.blurContent = function(){
+
+   var myEleToBlur = document.getElementsByClassName('paywallTrunk');
+    myEleToBlur[0].style.color = "transparent";
+  var value = '0 0 5px rgba(0,0,0,0.5)';
+      myEleToBlur[0].style.textShadow  = value;
+
+    }
+
     // Just create a property to our library object.
     _threeViveObject.Log = function(thingToLog) {
       console.log("Log > Type of variable : " + typeof(thingToLog));
@@ -521,6 +530,7 @@ if (location.hostname === "localhost") {
 //threeVive.checkCookieState();
 document.addEventListener("DOMContentLoaded", function(event) {
   threeVive.generateButtons();
+  threeVive.blurContent();
 });
 
 // Then we can call our custom function using
