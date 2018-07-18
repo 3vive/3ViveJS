@@ -74,6 +74,7 @@ if (location.hostname === "localhost") {
         endYears = 70,
         i;
       var buttonDiv = document.createElement('div');
+      buttonDiv.id="3ViveButtons";
       buttonDiv.style.textAlign = "center";
       buttonDiv.innerHTML = "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />" +
         "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />" +
@@ -323,6 +324,9 @@ if (location.hostname === "localhost") {
             myEleToUnBlur[0].style.color = null;
             var value = null;
             myEleToUnBlur[0].style.textShadow = value;
+            document.getElementById('3ViveButtons').style.display = "none";
+
+
 
     };
     _threeViveObject.load3ViveModule = function() {
