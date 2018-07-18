@@ -75,106 +75,106 @@ if (location.hostname === "localhost") {
         i;
       var buttonDiv = document.createElement('div');
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML =   "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />" +
-       "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />"
-       +"<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
+      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
       var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
       whereToAppendButtons.appendChild(buttonDiv);
     }
-    _threeViveObject.registerButton = function(){
+    _threeViveObject.registerButton = function() {
 
-              // create the elements
-              var div = document.createElement('div'),
-                centeredDiv = document.createElement('div'),
-                registrationForm = document.createElement('form');
+      // create the elements
+      var div = document.createElement('div'),
+        centeredDiv = document.createElement('div'),
+        registrationForm = document.createElement('form');
 
-              //  registerForm
-              // set body styles
-              document.body.style.color = '#fff';
-              document.body.style.textTransform = 'capitalize';
-              //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
-              document.body.style.backgroundSize = "cover";
-
-
-
-
-
-              centeredDiv.style.padding = '10px';
-              centeredDiv.style.position = 'fixed';
-              centeredDiv.style.zIndex = 999;
-              centeredDiv.style.left = 0;
-              centeredDiv.style.top = 0;
-              centeredDiv.style.width = '100%';
-              centeredDiv.style.height = '100%';
-              centeredDiv.style.overflow = 'auto';
-
-
-              div.id = "popUpAdPassDiv";
-              // set main-div styles
-              div.style.background = "#129979";
-              div.style.width = '300px';
-              div.style.margin = '30px auto';
-              div.style.padding = '10px';
-              div.style.borderRadius = '10px';
-              div.style.borderTop = "0px #129979 solid";
-              div.style.borderBottom = "0px #129979 solid";
-              div.style.paddingTop = '20px';
-              div.style.textAlign = 'center';
-              //  div.style.position = 'fixed';
-              div.style.left = 0;
-              div.style.top = 0;
-              div.style.width = '40%';
-              div.style.height = '65%';
-              div.style.overflow = 'auto';
-
-              div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
-
-
-
-
-              // hide login form and show register form
-
-
-              // create some variables for styling
-              var inputStyles = "background:none;border: 1px solid white;width:100%;color:#fff;padding:5px;margin:5px;",
-                btnStyles = "background:#fff;border:none;width:100%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
-                forgetStyles = "color:#fff;",
-                labelStyles = "color: white; width: 100%;text-align: left;",
-                startYears = 10,
-                endYears = 70,
-                i;
-
-
-
-              registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
-                "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
-                "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
-                "<label style='" + labelStyles + "'>password</label><br/>" +
-                "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-                "<label style='" + labelStyles + "'>confirm password</label><br/>" +
-                "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-                "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
-
-
-
-
-          //    leftLoginDiv.style.borderRight = "2px #129979 solid";
+      //  registerForm
+      // set body styles
+      document.body.style.color = '#fff';
+      document.body.style.textTransform = 'capitalize';
+      //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
+      document.body.style.backgroundSize = "cover";
 
 
 
 
 
-                div.appendChild(registrationForm);
+      centeredDiv.style.padding = '10px';
+      centeredDiv.style.position = 'fixed';
+      centeredDiv.style.zIndex = 999;
+      centeredDiv.style.left = 0;
+      centeredDiv.style.top = 0;
+      centeredDiv.style.width = '100%';
+      centeredDiv.style.height = '100%';
+      centeredDiv.style.overflow = 'auto';
 
 
-              centeredDiv.appendChild(div);
-              // append main-div on the body
-              document.body.appendChild(centeredDiv);
-            //  window.removeEventListener("scroll", _threeViveObject.scrollTrigger);
+      div.id = "popUpAdPassDiv";
+      // set main-div styles
+      div.style.background = "#129979";
+      div.style.width = '300px';
+      div.style.margin = '30px auto';
+      div.style.padding = '10px';
+      div.style.borderRadius = '10px';
+      div.style.borderTop = "0px #129979 solid";
+      div.style.borderBottom = "0px #129979 solid";
+      div.style.paddingTop = '20px';
+      div.style.textAlign = 'center';
+      //  div.style.position = 'fixed';
+      div.style.left = 0;
+      div.style.top = 0;
+      div.style.width = '40%';
+      div.style.height = '65%';
+      div.style.overflow = 'auto';
+
+      div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
 
 
 
-}
+
+      // hide login form and show register form
+
+
+      // create some variables for styling
+      var inputStyles = "background:none;border: 1px solid white;width:100%;color:#fff;padding:5px;margin:5px;",
+        btnStyles = "background:#fff;border:none;width:100%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
+        forgetStyles = "color:#fff;",
+        labelStyles = "color: white; width: 100%;text-align: left;",
+        startYears = 10,
+        endYears = 70,
+        i;
+
+
+
+      registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
+        "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+        "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>password</label><br/>" +
+        "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>confirm password</label><br/>" +
+        "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+        "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
+
+
+
+
+      //    leftLoginDiv.style.borderRight = "2px #129979 solid";
+
+
+
+
+
+      div.appendChild(registrationForm);
+
+
+      centeredDiv.appendChild(div);
+      // append main-div on the body
+      document.body.appendChild(centeredDiv);
+      //  window.removeEventListener("scroll", _threeViveObject.scrollTrigger);
+
+
+
+    }
 
     _threeViveObject.scrollTrigger = function() {
 
@@ -293,8 +293,7 @@ if (location.hostname === "localhost") {
           leftLoginDiv.appendChild(loginForm);
           div.appendChild(leftLoginDiv);
           div.appendChild(rightLoginDiv);
-        }
-        else {
+        } else {
           div.appendChild(registrationForm);
 
         }
@@ -319,6 +318,12 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.loadAllAdRevenue = function() {
 
+
+            var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
+            myEleToUnBlur[0].style.color = null;
+            var value = null;
+            myEleToUnBlur[0].style.textShadow = value;
+
     };
     _threeViveObject.load3ViveModule = function() {
 
@@ -333,9 +338,9 @@ if (location.hostname === "localhost") {
     }
 
     _threeViveObject.closePopup = function() {
-       var element = document.getElementById('popUpAdPassDiv');
+      var element = document.getElementById('popUpAdPassDiv');
 
-       element.parentNode.removeChild(element);
+      element.parentNode.removeChild(element);
     }
     _threeViveObject.validateForm = function() {
 
@@ -466,27 +471,27 @@ if (location.hostname === "localhost") {
 
 
 
-    if ((payload.username != null || payload.username != "") && (payload.password != null || payload.password != "")) {
-                var api = hostUrl + '/api/v1/users/user/' + payload.username;
+      if ((payload.username != null || payload.username != "") && (payload.password != null || payload.password != "")) {
+        var api = hostUrl + '/api/v1/users/user/' + payload.username;
 
-                fetch(api, {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+        fetch(api, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
 
-                    },
-                    credentials: "include",
-                    method: 'GET'
-                }).then(function (response) {
-                    alert(response);
-                    return response.json();
-                }).then(
-                    function (data) {
-                        console.log(data);
-                    }
-                )
-            }
+          },
+          credentials: "include",
+          method: 'GET'
+        }).then(function(response) {
+          alert(response);
+          return response.json();
+        }).then(
+          function(data) {
+            console.log(data);
+          }
+        )
+      }
 
 
 
@@ -499,14 +504,18 @@ if (location.hostname === "localhost") {
       })
     }
 
-    _threeViveObject.blurContent = function(){
+    _threeViveObject.blurContent = function() {
 
-   var myEleToBlur = document.getElementsByClassName('paywallTrunk');
-    myEleToBlur[0].style.color = "transparent";
-  var value = '0 0 5px rgba(0,0,0,0.5)';
-      myEleToBlur[0].style.textShadow  = value;
+      var myEleToBlur = document.getElementsByClassName('paywallTrunk');
+      myEleToBlur[0].style.color = "transparent";
+      var value = '0 0 5px rgba(0,0,0,0.5)';
+      myEleToBlur[0].style.textShadow = value;
 
     }
+
+
+
+
 
     // Just create a property to our library object.
     _threeViveObject.Log = function(thingToLog) {
