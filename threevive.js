@@ -91,10 +91,10 @@ if (location.hostname === "localhost") {
 
       //  registerForm
       // set body styles
-      document.body.style.color = '#fff';
-      document.body.style.textTransform = 'capitalize';
+    //  document.body.style.color = '#fff';
+    //  document.body.style.textTransform = 'capitalize';
       //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
-      document.body.style.backgroundSize = "cover";
+      //document.body.style.backgroundSize = "cover";
 
 
 
@@ -193,10 +193,10 @@ if (location.hostname === "localhost") {
 
         //  registerForm
         // set body styles
-        document.body.style.color = '#fff';
-        document.body.style.textTransform = 'capitalize';
+      //  document.body.style.color = '#fff';
+        //document.body.style.textTransform = 'capitalize';
         //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
-        document.body.style.backgroundSize = "cover";
+        //document.body.style.backgroundSize = "cover";
 
 
 
