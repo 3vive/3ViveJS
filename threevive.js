@@ -16,6 +16,8 @@ if (location.hostname === "localhost") {
   function threeVive() {
     var _threeViveObject = {};
 
+
+    var currentACBal;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -446,6 +448,17 @@ if (location.hostname === "localhost") {
       }).then(function(newUser) {
         console.log(newUser);
         debugger;
+
+        if (newUser.enabled = true) {  //account creation is true then send over the account
+
+        alert("Placeholder: Thank you for registering, We've added a complimentary $"  + newUser.userAccount.accountBalance +"to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience")
+        currentACBal = newUser.userAccount.accountBalance;
+        }
+        else {
+          alert("This account name has already been taken, please try again");
+        }
+
+
         _threeViveObject.newUser = newUser;
       })
     }
