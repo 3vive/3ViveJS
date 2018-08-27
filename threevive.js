@@ -51,6 +51,7 @@ if (location.hostname === "localhost") {
         _threeViveObject.loadAllAdRevenue();
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
+        _threeViveObject.generateButtons();
         return true;
 
 
