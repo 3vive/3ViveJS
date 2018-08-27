@@ -553,9 +553,9 @@ if (location.hostname === "localhost") {
 
 
 })(window); // We send the window variable withing our function
-//threeVive.checkCookieState();
+threeVive.checkCookieState();
 document.addEventListener("DOMContentLoaded", function(event) {
-  threeVive.generateButtons();
+  //threeVive.generateButtons();
   threeVive.blurContent();
 });
 
