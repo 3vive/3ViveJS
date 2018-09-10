@@ -82,7 +82,8 @@ if (location.hostname === "localhost") {
       buttonDiv.innerHTML = "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />" +
         "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />" +
         "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
-      var whereToAppendButtons = document.getElementsByClassName("entry-content")[0];
+debugger;
+      var whereToAppendButtons = document.getElementById("buttonHook");
       whereToAppendButtons.appendChild(buttonDiv);
     }
     _threeViveObject.registerButton = function() {
@@ -554,11 +555,19 @@ if (location.hostname === "localhost") {
 
 
 })(window); // We send the window variable withing our function
-threeVive.checkCookieState();
-document.addEventListener("DOMContentLoaded", function(event) {
+//threeVive.checkCookieState();
+
+document.addEventListener("load", function(event) {
+  console.log("DOM fully loaded and parsed");
+});
+
+
+window.onload = function(){
+  threeVive.checkCookieState();
   //threeVive.generateButtons();
   threeVive.blurContent();
-});
+}
+
 
 // Then we can call our custom function using
 //threeVive.log(["test1","test2"]);
