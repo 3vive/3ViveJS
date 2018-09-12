@@ -16,6 +16,19 @@ if (location.hostname === "localhost") {
   function threeVive() {
     var _threeViveObject = {};
 
+    var cssId = 'myCss';
+    if (!document.getElementById(cssId))
+    {
+        var head  = document.getElementsByTagName('head')[0];
+        var link  = document.createElement('link');
+        link.id   = cssId;
+        link.rel  = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://app.3vive.com:8080/css/threevive.css';
+        link.media = 'all';
+        head.appendChild(link);
+    }
+
 
     var currentACBal;
     //Generate the iframe in parent window
@@ -455,6 +468,17 @@ debugger;
 
         alert("Placeholder: Thank you for registering, We've added a complimentary $"  + newUser.userAccount.accountBalance +"to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience")
         currentACBal = newUser.userAccount.accountBalance;
+
+
+
+        var thishtml = '<div id="snackbar">'+ currentACBal + '</div>'
+        document.body.appendChild(thishtml);
+        var x = document.getElementById("snackbar");
+
+   x.className = "show";
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+
         }
         else {
           alert("This account name has already been taken, please try again");
