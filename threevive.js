@@ -60,11 +60,11 @@ if (location.hostname === "localhost") {
 
 
       if (threeViveCookieValue == 'true') {
-
-        _threeViveObject.loadAllAdRevenue();
+          _threeViveObject.generateButtons();
+        //_threeViveObject.loadAllAdRevenue();
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
-        _threeViveObject.generateButtons();
+
         return true;
 
 
