@@ -96,7 +96,7 @@ if (location.hostname === "localhost") {
         "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />" +
         "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
 debugger;
-      var whereToAppendButtons = document.getElementsByClassName("paywallButtons");
+      var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
     }
     _threeViveObject.registerButton = function() {
