@@ -59,7 +59,7 @@ if (location.hostname === "localhost") {
       var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 
-      if (threeViveCookieValue == true) {
+      if (threeViveCookieValue == 'true') {
 
         _threeViveObject.loadAllAdRevenue();
         _threeViveObject.load3ViveModule();
@@ -68,7 +68,7 @@ if (location.hostname === "localhost") {
         return true;
 
 
-      } else if (threeViveCookieValue == false) {
+      } else if (threeViveCookieValue == 'false') {
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
         document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
