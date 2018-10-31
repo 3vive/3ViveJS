@@ -24,7 +24,7 @@ if (location.hostname === "localhost") {
         link.id   = cssId;
         link.rel  = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'http://app.3vive.com:8080/css/threevive.css';
+        link.href = 'threevive.css';
         link.media = 'all';
         head.appendChild(link);
     }
@@ -83,19 +83,22 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.generateButtons = function() {
       var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
-        btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;font-style: italic;",
+        btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;",
         btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
         forgetStyles = "color:#fff;",
         startYears = 10,
         endYears = 70,
         i;
       var buttonDiv = document.createElement('div');
-      buttonDiv.id="3ViveButtons";
+      buttonDiv.id="ViveButtons";
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML = "<input type='button' onclick='threeVive.scrollTrigger();' value='Ad Pass' style='" + btnStyles + "' />" +
-        "<input type='button' onclick='threeVive.registerButton();' value='Ad Pass Registration' style='" + btnStyles + "' />" +
-        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Continue reading with Ads' style='" + btnStylesInverse + "' />";
-debugger;
+      buttonDiv.innerHTML = 
+        "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto'>ADPASS</div></div>" +
+        "<input type='button' onclick='threeVive.scrollTrigger();' value='Login' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.registerButton();' value='Registration' style='" + btnStyles + "' />" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />" +
+        "<div style='border-bottom:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px;clear:both;margin-bottom:30px'></div>";
+//debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
     }
@@ -142,20 +145,17 @@ debugger;
       div.style.left = 0;
       div.style.top = 0;
       div.style.width = '40%';
-      div.style.height = '65%';
       div.style.overflow = 'auto';
+      div.style.paddingBottom = '20px';
 
-      div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
-
-
-
+      div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:8%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;margin-top:-32px"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
 
       // hide login form and show register form
 
 
       // create some variables for styling
-      var inputStyles = "background:none;border: 1px solid white;width:100%;color:#fff;padding:5px;margin:5px;",
-        btnStyles = "background:#fff;border:none;width:100%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
+      var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#fff;padding:5px;margin:5px;",
+        btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
         forgetStyles = "color:#fff;",
         labelStyles = "color: white; width: 100%;text-align: left;",
         startYears = 10,
@@ -244,10 +244,9 @@ debugger;
         div.style.left = 0;
         div.style.top = 0;
         div.style.width = '40%';
-        div.style.height = '65%';
         div.style.overflow = 'auto';
 
-        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:5%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
+        div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:8%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;margin-top:-32px"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
 
 
 
@@ -256,16 +255,16 @@ debugger;
 
 
         // create some variables for styling
-        var inputStyles = "background:none;border: 1px solid white;width:100%;color:#fff;padding:5px;margin:5px;",
-          btnStyles = "background:#fff;border:none;width:100%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
-          forgetStyles = "color:#fff;",
-          labelStyles = "color: white; width: 100%;text-align: left;",
-          startYears = 10,
-          endYears = 70,
-          i;
+        var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#fff;padding:5px;margin:5px;",
+        btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
+        forgetStyles = "color:#fff;",
+        labelStyles = "color: white; width: 100%;text-align: left;",
+        startYears = 10,
+        endYears = 70,
+        i;
 
         // set loginForm styles
-        loginForm.style.margin = '50px 20px 20px 20px';
+        loginForm.style.margin = '0px';
         loginForm.id = 'loginForm';
         //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
@@ -341,7 +340,7 @@ debugger;
             myEleToUnBlur[0].style.color = null;
             var value = null;
             myEleToUnBlur[0].style.textShadow = value;
-            document.getElementById('3ViveButtons').style.display = "none";
+            document.getElementById('ViveButtons').style.display = "none";
 
 
 
