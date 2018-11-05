@@ -84,7 +84,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.generateButtons = function() {
       var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
         btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;",
-        btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:5px;margin:5px;border-radius: 15px",
+        btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px",
         forgetStyles = "color:#fff;",
         startYears = 10,
         endYears = 70,
@@ -104,7 +104,7 @@ if (location.hostname === "localhost") {
     }
     _threeViveObject.registerButton = function() {
       // create the elements
-      var div = document.createElement('div').setAttribute("id", "modalContainer"),
+      var div = document.createElement('div'),
       centeredDiv = document.createElement('div'),
       registrationForm = document.createElement('form');
 
@@ -114,6 +114,10 @@ if (location.hostname === "localhost") {
       //document.body.style.textTransform = 'capitalize';
       //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
       //document.body.style.backgroundSize = "cover";
+
+
+
+
 
       centeredDiv.style.padding = '10px';
       centeredDiv.style.position = 'fixed';
@@ -354,7 +358,7 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.closePopup = function() {
       var element = document.getElementById('popUpAdPassDiv');
-      element.parentNode.removeChild(element);
+      element.parentNode.parentNode.removeChild(element);
     }
 
     _threeViveObject.validateForm = function() {
