@@ -105,9 +105,9 @@ if (location.hostname === "localhost") {
     _threeViveObject.registerButton = function() {
       // create the elements
       var div = document.createElement('div'),
-      div.setAttribute("id", "modalContainer"),
       centeredDiv = document.createElement('div'),
       registrationForm = document.createElement('form');
+      div.setAttribute("id", "modalContainer");
 
       //registerForm
       //set body styles
