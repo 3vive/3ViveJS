@@ -115,10 +115,6 @@ if (location.hostname === "localhost") {
       //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
       //document.body.style.backgroundSize = "cover";
 
-
-
-
-
       centeredDiv.style.padding = '10px';
       centeredDiv.style.position = 'fixed';
       centeredDiv.style.zIndex = 999;
