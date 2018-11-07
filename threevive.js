@@ -137,6 +137,7 @@ if (location.hostname === "localhost") {
           rightLoginDiv = document.createElement('div'),
           loginForm = document.createElement('form'),
           registrationForm = document.createElement('form');
+          centeredDiv.id = "mContainer";
         //  registerForm
         // set body styles
         //  document.body.style.color = '#fff';
