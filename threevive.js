@@ -72,9 +72,9 @@ if (location.hostname === "localhost") {
       var buttonDiv = document.createElement('div');
       buttonDiv.id = "ViveButtons";
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" + 
-        "<input type='button' onclick='threeVive.scrollTrigger();' value='Login' style='" + btnStyles + "' class='inputButton' />" + 
-        "<input type='button' onclick='threeVive.registerButton();' value='Registration' style='" + btnStyles + "' class='inputButton' />" + 
+      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
+        "<input type='button' onclick='threeVive.scrollTrigger();' value='Login' style='" + btnStyles + "' class='inputButton' />" +
+        "<input type='button' onclick='threeVive.registerButton();' value='Registration' style='" + btnStyles + "' class='inputButton' />" +
         "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />" +
         "<div id='borderBottom' style='color:red;margin:auto;width:90%;clear:both'>Continue reading content by clicking any of the options above. Using ADPASS is a quick and easy way to avoid the hassle of Advertising and Tracking while maintaining your privacy.</div>";
       //debugger;
@@ -116,19 +116,19 @@ if (location.hostname === "localhost") {
       // create some variables for styling
       var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#000;padding:5px;margin:5px;",
         btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
-        forgetStyles = "color:#fff;",
+        forgetStyles = "color:#000;",
         labelStyles = "color: white; width: 100%;text-align: left;",
         startYears = 10,
         endYears = 70,
         i;
-      registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" + 
-        "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + 
-        "<label style='" + labelStyles + "'>e-mail</label><br/>" + 
-        "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" + 
-        "<label style='" + labelStyles + "'>password</label><br/>" + 
-        "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" + 
-        "<label style='" + labelStyles + "'>confirm password</label><br/>" + 
-        "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" + 
+      registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
+        "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+        "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>password</label><br/>" +
+        "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>confirm password</label><br/>" +
+        "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
         "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
       //    leftLoginDiv.style.borderRight = "2px #129979 solid";
       div.appendChild(registrationForm);
@@ -190,19 +190,19 @@ if (location.hostname === "localhost") {
         loginForm.id = 'loginForm';
         //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
-        loginForm.innerHTML = "<label style='" + labelStyles + "'>username</label><br/>" + 
-          "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + 
-          "<label style='" + labelStyles + "'>password</label><br/>" + 
-          "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" + 
-          "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" + 
+        loginForm.innerHTML = "<label style='" + labelStyles + "'>username</label><br/>" +
+          "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>password</label><br/>" +
+          "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" +
           "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
 
-        registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" + 
-          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + 
-          "<label style='" + labelStyles + "'>e-mail</label><br/>" + 
-          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" + 
+        registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
+          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
           "<label style='" + labelStyles + "'>password</label><br/>" + "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
-          "<label style='" + labelStyles + "'>confirm password</label><br/>" + "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" + 
+          "<label style='" + labelStyles + "'>confirm password</label><br/>" + "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
           "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
 
         rightLoginDiv.innerHTML = '<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>';
