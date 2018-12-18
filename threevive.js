@@ -348,7 +348,32 @@ if (location.hostname === "localhost") {
         console.log(newUser);
         debugger;
         if (newUser.enabled == true || newUser.enabled == "true") { //account creation is true then send over the account
-          alert("Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...")
+
+          var message = "Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...";
+          var div = document.createElement("div");
+          div.id = "myModal";
+          div.styles
+          div.innerHTML = '<div style="background-color: #fefefe; margin: auto;padding: 20px; border: 1px solid #888; width: 80%;"> <span class="close">&times;</span><p>'+ message +'</p></div>';
+          div.styles = "display: none; position: fixed; z-index: 1;  padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0);  background-color: rgba(0,0,0,0.4);";
+          var span = document.getElementsByClassName("close")[0];
+
+          modal.style.display = "block";
+
+
+          span.onclick = function() {
+  modal.style.display = "none";
+  window.location.reload();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+
+  }
+}
+
+
           currentACBal = newUser.userAccount.accountBalance;
           var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           document.body.appendChild(thishtml);
