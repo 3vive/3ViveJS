@@ -348,7 +348,7 @@ if (location.hostname === "localhost") {
         console.log(newUser);
         debugger;
         if (newUser.enabled == true || newUser.enabled == "true") { //account creation is true then send over the account
-          alert("Placeholder: Thank you for registering, We've added a complimentary $" + newUser.userAccount.accountBalance + "to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience")
+          alert("Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...")
           currentACBal = newUser.userAccount.accountBalance;
           var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           document.body.appendChild(thishtml);
@@ -358,7 +358,7 @@ if (location.hostname === "localhost") {
             x.className = x.className.replace("show", "");
           }, 3000);
         } else {
-          alert("This account name has already been taken, please try again");
+          alert("email address current exists, try logging in");
         }
         _threeViveObject.newUser = newUser;
       })
