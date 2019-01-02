@@ -357,11 +357,11 @@ if (location.hostname === "localhost") {
           div.styles = "display: none; position: fixed; z-index: 1;  padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0);  background-color: rgba(0,0,0,0.4);";
           var span = document.getElementsByClassName("close")[0];
 
-          modal.style.display = "block";
+          div.style.display = "block";
 
 
           span.onclick = function() {
-  modal.style.display = "none";
+  div.style.display = "none";
   window.location.reload();
 }
 
