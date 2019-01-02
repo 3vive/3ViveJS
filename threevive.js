@@ -26,6 +26,7 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
+    _threeViveObject.userName;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -236,9 +237,10 @@ if (location.hostname === "localhost") {
     }
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
-      myEleToUnBlur[0].style.color = null;
-      var value = null;
-      myEleToUnBlur[0].style.textShadow = value;
+      myEleToUnBlur.classList.remove('paywallTrunk');
+    //  myEleToUnBlur[0].style.color = null;
+      // var value = null;
+      // myEleToUnBlur[0].style.textShadow = value;
       document.getElementById('ViveButtons').style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
@@ -247,7 +249,20 @@ if (location.hostname === "localhost") {
       document.getElementById("paywallTrunk").className = "paywallTrunkClose";
       // Make some sort of DFP Ad refresh request here
     };
-    _threeViveObject.load3ViveModule = function() {};
+    _threeViveObject.load3ViveModule = function() {
+
+      var buttonDiv = document.createElement('div');
+      buttonDiv.id = "VivePay";
+      buttonDiv.style.textAlign = "center";
+      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
+        "<input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles + "' class='inputButton' />" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />" +
+        //debugger;
+      var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
+      whereToAppendButtons.appendChild(buttonDiv);
+/* MAke call to service to deduct payments**/
+
+    };
     _threeViveObject.hideArticleContent = function() {};
     _threeViveObject.showReg = function() {
       document.getElementById('hiddenRegTab').style.display = "";
@@ -353,7 +368,7 @@ if (location.hostname === "localhost") {
           var div = document.createElement("div");
           div.id = "myModal";
           div.styles
-          div.innerHTML = '<div style="background-color: #fefefe; margin: auto;padding: 20px; border: 1px solid #888; width: 80%;"> <span class="close">&times;</span><p>'+ message +'</p></div>';
+          div.innerHTML = '<div style="background-color: #fefefe; margin: auto;padding: 20px; border: 1px solid #888; width: 80%;"> <span class="close">&times;</span><p>' + message + '</p></div>';
           div.styles = "display: none; position: fixed; z-index: 1;  padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0);  background-color: rgba(0,0,0,0.4);";
           var span = document.getElementsByClassName("close")[0];
 
@@ -361,17 +376,17 @@ if (location.hostname === "localhost") {
 
 
           span.onclick = function() {
-  div.style.display = "none";
-  window.location.reload();
-}
+            div.style.display = "none";
+            window.location.reload();
+          }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
 
-  }
-}
+            }
+          }
 
 
           // currentACBal = newUser.userAccount.accountBalance;
@@ -419,7 +434,8 @@ window.onclick = function(event) {
           return response.json();
         }).then(function(data) {
           console.log(data);
-          _threeViveObject.generateButtons();
+          _threeViveObject.userName = payload.username;
+          _threeViveObject.load3ViveModule();
         })
       }
     }
@@ -441,6 +457,38 @@ window.onclick = function(event) {
       console.log("Log > Length : " + (thingToLog).length);
       return console.log(thingToLog);
     };
+
+
+    _threeViveObject.deductPay = function() {
+      var payload = {};
+      payload.username = document.getElementById("adPassUserNameLog").value;
+      payload.password = document.getElementById("adPassUsernamePassword").value;
+      if ((payload.username != null || payload.username != "")) {
+        var api = hostUrl + '/api/v1/wallet/pay/userName=' + _threeViveObject.username;
+        fetch(api, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+          },
+          credentials: "include",
+          method: 'GET'
+        }).then(function(response) {
+          alert(response);
+          return response.json();
+        }).then(function(data) {
+          console.log(data);
+          var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
+          myEleToUnBlur.classList.remove('paywallTrunk');
+        })
+      }
+    }
+
+
+
+
+
+
     return _threeViveObject;
   }
   // We need that our library is globally accesible, then we save in the window
