@@ -374,14 +374,14 @@ window.onclick = function(event) {
 }
 
 
-          currentACBal = newUser.userAccount.accountBalance;
-          var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
-          document.body.appendChild(thishtml);
-          var x = document.getElementById("snackbar");
-          x.className = "show";
-          setTimeout(function() {
-            x.className = x.className.replace("show", "");
-          }, 3000);
+          // currentACBal = newUser.userAccount.accountBalance;
+          // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
+          // document.body.appendChild(thishtml);
+          // var x = document.getElementById("snackbar");
+          // x.className = "show";
+          // setTimeout(function() {
+          //   x.className = x.className.replace("show", "");
+          // }, 3000);
         } else {
           alert("email address current exists, try logging in");
         }
