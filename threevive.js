@@ -419,6 +419,7 @@ window.onclick = function(event) {
           return response.json();
         }).then(function(data) {
           console.log(data);
+          _threeViveObject.generateButtons();
         })
       }
     }
