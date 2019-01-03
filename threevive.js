@@ -241,7 +241,7 @@ if (location.hostname === "localhost") {
     //  myEleToUnBlur[0].style.color = null;
       // var value = null;
       // myEleToUnBlur[0].style.textShadow = value;
-      document.getElementById('ViveButtons').style.display = "none";
+    //  document.getElementById('ViveButtons').style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
