@@ -435,7 +435,7 @@ if (location.hostname === "localhost") {
         }).then(function(data) {
           console.log(data);
           _threeViveObject.userName = payload.username;
-          _threeViveObject.load3ViveModule();
+        //  _threeViveObject.load3ViveModule();
         })
       }
     }
