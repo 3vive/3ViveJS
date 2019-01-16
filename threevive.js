@@ -252,9 +252,9 @@ if (location.hostname === "localhost") {
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
-      var btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;",
-      var btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;",
-      var btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px",
+      var btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;";
+      var btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;";
+      var btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px";
 
       var buttonDiv = document.createElement('div');
       buttonDiv.id = "VivePay";
