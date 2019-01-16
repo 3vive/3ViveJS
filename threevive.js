@@ -479,7 +479,7 @@ if (location.hostname === "localhost") {
         }).then(function(data) {
           console.log(data);
           var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
-          myEleToUnBlur.classList.remove('paywallTrunk');
+          myEleToUnBlur[0].classList.remove('paywallTrunk');
         })
       }
     }
