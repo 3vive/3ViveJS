@@ -246,7 +246,7 @@ if (location.hostname === "localhost") {
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
       };
-      document.getElementById("paywallTrunk").className = "paywallTrunkClose";
+      document.getElementById("paywallTrunk")[0].className = "paywallTrunkClose";
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
