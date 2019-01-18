@@ -248,6 +248,7 @@ if (location.hostname === "localhost") {
       };
       //document.getElementByClassName("paywallTrunk")[0].className = "paywallTrunkClose";
       document.getElementById("ViveButtons").style.display = "none";
+      document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
       // Make some sort of DFP Ad refresh request here
     };
