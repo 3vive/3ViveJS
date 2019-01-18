@@ -238,6 +238,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove('paywallTrunk');
+      document.getElementById("paywallTrunk").remove("blur");
       //  myEleToUnBlur[0].style.color = null;
       // var value = null;
       // myEleToUnBlur[0].style.textShadow = value;
@@ -250,7 +251,6 @@ if (location.hostname === "localhost") {
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
-      document.getElementById("paywallTrunk").remove("blur");
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
