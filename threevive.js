@@ -20,11 +20,13 @@ if (location.hostname === "localhost") {
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
+      //link.href = 'css/threevive.css';
       link.href = 'https://raw.githack.com/3vive/adpass/master/src/main/resources/static/css/threevive.css';
       link.media = 'all';
       head.appendChild(link);
     }
     var currentACBal;
+    _threeViveObject.userName;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -56,10 +58,14 @@ if (location.hostname === "localhost") {
         return false;
       }
     }
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
     _threeViveObject.generateButtons = function() {
       var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
         btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;",
+        btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;",
         btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px",
+        btnStylesAccount = "background:#129979;border:2px solid #129979;width:60%;color:#fff;padding:3px;margin:5px;",
         forgetStyles = "color:#fff;",
         startYears = 10,
         endYears = 70,
@@ -67,27 +73,24 @@ if (location.hostname === "localhost") {
       var buttonDiv = document.createElement('div');
       buttonDiv.id = "ViveButtons";
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto'>ADPASS</div></div>" + "<input type='button' onclick='threeVive.scrollTrigger();' value='Login' style='" + btnStyles + "' />" + "<input type='button' onclick='threeVive.registerButton();' value='Registration' style='" + btnStyles + "' />" + "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />" + "<div id='borderBottom' style='border-bottom:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px;clear:both;margin-bottom:30px'></div>";
+      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
+        "<input type='button' onclick='threeVive.scrollTrigger();' value='Login' style='" + btnStyles + "' class='inputButton' />" +
+        "<input type='button' onclick='threeVive.registerButton();' value='Registration' style='" + btnStyles + "' class='inputButton' />" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />" +
+        "<div id='borderBottom' style='color:red;margin:auto;width:90%;clear:both'>Continue reading content by clicking any of the options above. Using ADPASS is a quick and easy way to avoid the hassle of Advertising and Tracking while maintaining your privacy.</div>";
       //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
     }
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
     _threeViveObject.registerButton = function() {
       // create the elements
-      var
-        centeredDiv = document.createElement('div'),
+      var centeredDiv = document.createElement('div'),
         div = document.createElement('div'),
         registrationForm = document.createElement('form');
-        centeredDiv.id = "mContainer";
-      //registerForm
-      //set body styles
-      //document.body.style.color = '#fff';
-      //document.body.style.textTransform = 'capitalize';
-      //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
-      //document.body.style.backgroundSize = "cover";
+      centeredDiv.id = "mContainer";
       centeredDiv.style.padding = '10px';
-      //centeredDiv.style.position = 'fixed';
-      //centeredDiv.style.zIndex = 999;
       centeredDiv.style.left = 0;
       centeredDiv.style.top = 0;
       centeredDiv.style.width = '100%';
@@ -104,7 +107,6 @@ if (location.hostname === "localhost") {
       div.style.borderBottom = "0px #129979 solid";
       div.style.paddingTop = '20px';
       div.style.textAlign = 'center';
-      //  div.style.position = 'fixed';
       div.style.left = 0;
       div.style.top = 0;
       div.style.width = '100%';
@@ -115,20 +117,36 @@ if (location.hostname === "localhost") {
       // create some variables for styling
       var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#000;padding:5px;margin:5px;",
         btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
-        forgetStyles = "color:#fff;",
+        forgetStyles = "color:#000;",
         labelStyles = "color: white; width: 100%;text-align: left;",
         startYears = 10,
         endYears = 70,
         i;
-      registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" + "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" + "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>password</label><br/>" + "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>confirm password</label><br/>" + "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" + "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
+      registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
+        "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+        "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>password</label><br/>" +
+        "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+        "<label style='" + labelStyles + "'>confirm password</label><br/>" +
+        "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+        "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
       //    leftLoginDiv.style.borderRight = "2px #129979 solid";
       div.appendChild(registrationForm);
       centeredDiv.appendChild(div);
       // append main-div to primary column
       document.getElementById("borderBottom").appendChild(centeredDiv);
       document.getElementById("borderBottom").style.height = "auto";
+      var elems = document.getElementsByClassName("inputButton");
+      for (var i = 0; i < elems.length; i++) {
+        elems[i].disabled = true;
+      }
+      var regElmt = document.getElementById("mContainer");
+      regElmt.scrollIntoView();
       //  window.removeEventListener("scroll", _threeViveObject.scrollTrigger);
     }
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
     _threeViveObject.scrollTrigger = function() {
       if (window.scrollY > 200) {
         // create the elements
@@ -138,33 +156,22 @@ if (location.hostname === "localhost") {
           rightLoginDiv = document.createElement('div'),
           loginForm = document.createElement('form'),
           registrationForm = document.createElement('form');
-          centeredDiv.id = "mContainer";
-        //  registerForm
-        // set body styles
-        //  document.body.style.color = '#fff';
-        //document.body.style.textTransform = 'capitalize';
-        //document.body.style.background = "url('https://cdn.lennar.net/images/com/images/new-homes/3/63/mhi/El%20Dorado%20Hills%20Sunset-1200x540.jpg?w=1200&h=540&as=1 no-repeat";
-        //document.body.style.backgroundSize = "cover";
+        centeredDiv.id = "mContainer";
         centeredDiv.style.padding = '10px';
-        //centeredDiv.style.position = 'fixed';
-        //centeredDiv.style.zIndex = 999;
         centeredDiv.style.left = 0;
         centeredDiv.style.top = 0;
         centeredDiv.style.width = '100%';
         centeredDiv.style.height = '100%';
         centeredDiv.style.overflow = 'auto';
         div.id = "popUpAdPassDiv";
-        // set main-div styles
         div.style.background = "#129979";
         div.style.width = '300px';
         div.style.margin = '0px auto';
         div.style.padding = '10px';
         div.style.borderRadius = '10px';
         div.style.borderTop = "0px #129979 solid";
-        div.style.borderBottom = "0px #129979 solid";
         div.style.paddingTop = '20px';
         div.style.textAlign = 'center';
-        //  div.style.position = 'fixed';
         div.style.left = 0;
         div.style.top = 0;
         div.style.width = '100%';
@@ -172,7 +179,7 @@ if (location.hostname === "localhost") {
         div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:8%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;margin-top:-32px"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
         // hide login form and show register form
         // create some variables for styling
-        var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#fff;padding:5px;margin:5px;",
+        var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#000;padding:5px;margin:5px;",
           btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
           forgetStyles = "color:#fff;",
           labelStyles = "color: white; width: 100%;text-align: left;",
@@ -184,16 +191,22 @@ if (location.hostname === "localhost") {
         loginForm.id = 'loginForm';
         //  loginForm.action = "http://app.3vive.com:8080/api/v1/partners";
         // set the elements and styles on the form
-        loginForm.innerHTML = "<label style='" + labelStyles + "'>username</label><br/>" + "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>password</label><br/>" + "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" + "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" + "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
-        registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" + "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>e-mail</label><br/>" + "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>password</label><br/>" + "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" + "<label style='" + labelStyles + "'>confirm password</label><br/>" + "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" + "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
+        loginForm.innerHTML = "<label style='" + labelStyles + "'>username</label><br/>" +
+          "<input id='adPassUserNameLog' type='text' placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>password</label><br/>" +
+          "<input id='adPassUsernamePassword' type='password' placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' value='Login'onclick='threeVive.loginUser()'   style='" + btnStyles + "' />" +
+          "<p><a style='" + forgetStyles + "' href='#'>forget password ?</a></p><br/>";
+
+        registrationForm.innerHTML = " <label style='" + labelStyles + "' >username</label><br/>" +
+          "<input id='adPassUserNameReg' type='text' required placeholder='type username' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>e-mail</label><br/>" +
+          "<input id='adPassEmailName' type='email'required placeholder='your email' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>password</label><br/>" + "<input id='adPassRegPassword' type='password' required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<label style='" + labelStyles + "'>confirm password</label><br/>" + "<input id='adPassRegPassword2' type='password'required placeholder='*************' style='" + inputStyles + "' /><br/>" +
+          "<input type='button' onclick='threeVive.validateForm();' value='Register' style='" + btnStyles + "' /> </div>";
+
         rightLoginDiv.innerHTML = '<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>';
-        // set registerForm styles
-        // registerForm.style.margin = '50px 20px 20px 20px';
-        // registerForm.style.display = 'none';
-        // registerForm.id = 'registerForm';
-        // set the elements and styles on the form
-        //  registerForm.innerHTML =
-        // append the bottons and form on main-div
         leftLoginDiv.style.borderRight = "2px #129979 solid";
         //put real values from the cookie here
         if (true) {
@@ -207,20 +220,54 @@ if (location.hostname === "localhost") {
         // append main-div on the body
         document.getElementById("borderBottom").appendChild(centeredDiv);
         document.getElementById("borderBottom").style.height = "auto";
+        var elems = document.getElementsByClassName("inputButton");
+        for (var i = 0; i < elems.length; i++) {
+          elems[i].disabled = true;
+        }
+        var regElmt = document.getElementById("mContainer");
+        regElmt.scrollIntoView();
         window.removeEventListener("scroll", _threeViveObject.scrollTrigger);
       }
     }
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+
     _threeViveObject.scrollUntilPopup = function() {
       window.addEventListener('scroll', _threeViveObject.scrollTrigger)
     }
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
-      myEleToUnBlur[0].style.color = null;
-      var value = null;
-      myEleToUnBlur[0].style.textShadow = value;
-      document.getElementById('ViveButtons').style.display = "none";
+      myEleToUnBlur[0].classList.remove('paywallTrunk');
+    //  myEleToUnBlur[0].style.color = null;
+      // var value = null;
+      // myEleToUnBlur[0].style.textShadow = value;
+    //  document.getElementById('ViveButtons').style.display = "none";
+      var adElems = document.getElementsByClassName("advertisement-content");
+      for (var i = 0; i < adElems.length; i++) {
+        adElems[i].style.display = "block";
+      };
+      //document.getElementByClassName("paywallTrunk")[0].className = "paywallTrunkClose";
+      document.getElementById("ViveButtons").style.display = "none";
+      document.getElementsByClassName("blur")[0].style.color = null;
+      // Make some sort of DFP Ad refresh request here
     };
-    _threeViveObject.load3ViveModule = function() {};
+    _threeViveObject.load3ViveModule = function() {
+      var btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;";
+      var btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;";
+      var btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px";
+
+      var buttonDiv = document.createElement('div');
+      buttonDiv.id = "VivePay";
+      buttonDiv.style.textAlign = "center";
+      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
+        "<input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles + "' class='inputButton' />" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />";
+        //debugger;
+      var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
+      whereToAppendButtons.appendChild(buttonDiv);
+/* MAke call to service to deduct payments**/
+
+    };
     _threeViveObject.hideArticleContent = function() {};
     _threeViveObject.showReg = function() {
       document.getElementById('hiddenRegTab').style.display = "";
@@ -229,6 +276,10 @@ if (location.hostname === "localhost") {
       var element = document.getElementById('mContainer');
       element.parentNode.removeChild(element);
       document.getElementById("borderBottom").style.height = "23px";
+      var elems = document.getElementsByClassName("inputButton");
+      for (var i = 0; i < elems.length; i++) {
+        elems[i].disabled = false;
+      }
     }
     _threeViveObject.validateForm = function() {
       var usr = document.getElementById('adPassUserNameReg');
@@ -317,17 +368,42 @@ if (location.hostname === "localhost") {
         console.log(newUser);
         debugger;
         if (newUser.enabled == true || newUser.enabled == "true") { //account creation is true then send over the account
-          alert("Placeholder: Thank you for registering, We've added a complimentary $" + newUser.userAccount.accountBalance + "to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience")
-          currentACBal = newUser.userAccount.accountBalance;
-          var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
-          document.body.appendChild(thishtml);
-          var x = document.getElementById("snackbar");
-          x.className = "show";
-          setTimeout(function() {
-            x.className = x.className.replace("show", "");
-          }, 3000);
+
+          var message = "Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...";
+          var div = document.createElement("div");
+          div.id = "myModal";
+          div.styles
+          div.innerHTML = '<div style="background-color: #fefefe; margin: auto;padding: 20px; border: 1px solid #888; width: 80%;"> <span class="close">&times;</span><p>' + message + '</p></div>';
+          div.styles = "display: none; position: fixed; z-index: 1;  padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0);  background-color: rgba(0,0,0,0.4);";
+          var span = document.getElementsByClassName("close")[0];
+
+          div.style.display = "block";
+
+
+          span.onclick = function() {
+            div.style.display = "none";
+            window.location.reload();
+          }
+
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+
+            }
+          }
+
+
+          // currentACBal = newUser.userAccount.accountBalance;
+          // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
+          // document.body.appendChild(thishtml);
+          // var x = document.getElementById("snackbar");
+          // x.className = "show";
+          // setTimeout(function() {
+          //   x.className = x.className.replace("show", "");
+          // }, 3000);
         } else {
-          alert("This account name has already been taken, please try again");
+          alert("email address current exists, try logging in");
         }
         _threeViveObject.newUser = newUser;
       })
@@ -363,6 +439,8 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
+          _threeViveObject.userName = payload.username;
+          _threeViveObject.load3ViveModule();
         })
       }
     }
@@ -374,7 +452,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.blurContent = function() {
       var myEleToBlur = document.getElementsByClassName('paywallTrunk');
       myEleToBlur[0].style.color = "transparent";
-      var value = '0 0 5px rgba(0,0,0,0.5)';
+      var value = '0 0 10px rgba(0,0,0,0.1)';
       myEleToBlur[0].style.textShadow = value;
     }
     // Just create a property to our library object.
@@ -384,6 +462,32 @@ if (location.hostname === "localhost") {
       console.log("Log > Length : " + (thingToLog).length);
       return console.log(thingToLog);
     };
+
+
+    _threeViveObject.deductPay = function() {
+      var payload = {};
+      payload.username = document.getElementById("adPassUserNameLog").value;
+      payload.password = document.getElementById("adPassUsernamePassword").value;
+      if ((payload.username != null || payload.username != "")) {
+        var api = hostUrl + '/api/v1/wallet/pay/userName=' + _threeViveObject.username;
+        fetch(api, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+          },
+          credentials: "include",
+          method: 'GET'
+        }).then(function(response) {
+          alert(response);
+          return response.json();
+        }).then(function(data) {
+          console.log(data);
+          var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
+          myEleToUnBlur[0].classList.remove('paywallTrunk');
+        })
+      }
+    }
     return _threeViveObject;
   }
   // We need that our library is globally accesible, then we save in the window
