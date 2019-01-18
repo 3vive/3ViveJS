@@ -250,6 +250,7 @@ if (location.hostname === "localhost") {
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
+      document.getElementById("paywallTrunk").remove("blur");
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
