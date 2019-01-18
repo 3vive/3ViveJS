@@ -238,10 +238,10 @@ if (location.hostname === "localhost") {
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove('paywallTrunk');
-    //  myEleToUnBlur[0].style.color = null;
+      //  myEleToUnBlur[0].style.color = null;
       // var value = null;
       // myEleToUnBlur[0].style.textShadow = value;
-    //  document.getElementById('ViveButtons').style.display = "none";
+      //  document.getElementById('ViveButtons').style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
@@ -265,6 +265,7 @@ if (location.hostname === "localhost") {
         //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
+      document.getElementById("ViveButtons").style.display = "none";
 /* MAke call to service to deduct payments**/
 
     };
@@ -488,12 +489,6 @@ if (location.hostname === "localhost") {
         })
       }
     }
-
-
-
-
-
-
     return _threeViveObject;
   }
   // We need that our library is globally accesible, then we save in the window
