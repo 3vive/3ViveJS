@@ -262,7 +262,7 @@ if (location.hostname === "localhost") {
       buttonDiv.id = "VivePay";
       buttonDiv.style.textAlign = "center";
       buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
-        "<div style='background-color:#4DC7AB;display: inline-block;border-radius: 15px;padding-right: 10px;'><input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles2 + "' class='inputButton' />My Wallet: 8$</div>" +
+        "<div style='background-color:#4DC7AB;display: inline-block;border-radius: 15px;padding-right: 10px;'><input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles2 + "' class='inputButton' />My Wallet: "+ currentACBal +" </div>" +
         "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse2 + "' />";
         //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
