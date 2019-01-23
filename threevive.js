@@ -63,10 +63,8 @@ if (location.hostname === "localhost") {
     _threeViveObject.generateButtons = function() {
       var inputStyles = "background:none;border-color:#888;border-width:0 0 1px 0;width:100%;color:#fff;padding:5px;margin:5px;",
         btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;",
-        
         btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;",
         btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px",
-        
         btnStylesAccount = "background:#129979;border:2px solid #129979;width:60%;color:#fff;padding:3px;margin:5px;",
         forgetStyles = "color:#fff;",
         startYears = 10,
@@ -263,7 +261,7 @@ if (location.hostname === "localhost") {
       var buttonDiv = document.createElement('div');
       buttonDiv.id = "VivePay";
       buttonDiv.style.textAlign = "center";
-      buttonDiv.innerHTML = ""<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
+      buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
         "<div style='background-color:#4DC7AB;display: inline-block;border-radius: 15px;padding-right: 10px;'><input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles2 + "' class='inputButton' />My Wallet: 8$</div>" +
         "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse2 + "' />";
         //debugger;
