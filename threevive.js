@@ -27,6 +27,7 @@ if (location.hostname === "localhost") {
     }
     var currentACBal;
     _threeViveObject.userName;
+    _threeViveObject.password;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -442,6 +443,7 @@ if (location.hostname === "localhost") {
         }).then(function(data) {
           console.log(data);
           _threeViveObject.userName = payload.username;
+          _threeViveObject.password = payload.password;
            currentACBal = data.userAccount.accountBalance;
           _threeViveObject.load3ViveModule();
         })
@@ -469,8 +471,8 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.deductPay = function() {
       var payload = {};
-      payload.username = document.getElementById("adPassUserNameLog").value;
-      payload.password = document.getElementById("adPassUsernamePassword").value;
+      payload.username = threeVive.userName;
+      payload.password = threeVive.password;
       if ((payload.username != null || payload.username != "")) {
         var api = hostUrl + '/api/v1/wallet/pay/userName=' + _threeViveObject.username;
         fetch(api, {
