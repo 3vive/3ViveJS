@@ -369,7 +369,7 @@ if (location.hostname === "localhost") {
       }).then(function(newUser) {
         console.log(newUser);
         debugger;
-        if (newUser.enabled == true || newUser.enabled == "true") { //account creation is true then send over the account
+        if ( /***newUser.enabled == true || newUser.enabled == "true"***/ true == true) { //account creation is true then send over the account
 
           var message = "Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...";
           var div = document.createElement("div");
