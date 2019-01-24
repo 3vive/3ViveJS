@@ -394,7 +394,7 @@ if (location.hostname === "localhost") {
 
             }
           }
-
+           _threeViveObject.load3ViveModule();
 
            currentACBal = newUser.userAccount.accountBalance;
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
