@@ -396,7 +396,7 @@ if (location.hostname === "localhost") {
           }
 
 
-          // currentACBal = newUser.userAccount.accountBalance;
+           currentACBal = newUser.userAccount.accountBalance;
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
           // var x = document.getElementById("snackbar");
