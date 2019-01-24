@@ -442,6 +442,7 @@ if (location.hostname === "localhost") {
         }).then(function(data) {
           console.log(data);
           _threeViveObject.userName = payload.username;
+           currentACBal = data.userAccount.accountBalance;
           _threeViveObject.load3ViveModule();
         })
       }
