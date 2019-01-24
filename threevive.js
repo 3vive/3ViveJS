@@ -383,10 +383,10 @@ if (location.hostname === "localhost") {
           div.style.display = "block";
 
 
-          span.onclick = function() {
-            div.style.display = "none";
-            window.location.reload();
-          }
+          // span.onclick = function() {
+          //   div.style.display = "none";
+          //   window.location.reload();
+          // }
 
           // When the user clicks anywhere outside of the modal, close it
           window.onclick = function(event) {
