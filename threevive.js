@@ -240,6 +240,7 @@ if (location.hostname === "localhost") {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove('paywallTrunk');
       document.getElementById("paywallTrunk").remove("blur");
+      document.getElementsByClassName('blur').removeAttribute("style");
       //  myEleToUnBlur[0].style.color = null;
       // var value = null;
       // myEleToUnBlur[0].style.textShadow = value;
