@@ -56,7 +56,7 @@ if (location.hostname === "localhost") {
           _threeViveObject.generateButtons();
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
-        document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
+        document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
         return false;
       }
     }
@@ -256,6 +256,17 @@ if (location.hostname === "localhost") {
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
+
+
+      if (threeViveCookieValue == "true") {
+
+        _threeViveObject.loginUser();
+
+
+      }
+
+
+
       var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
       var btnStylesInverse2 = "background:white;border:1px solid #129979;color:#129979;margin:5px;border-radius: 15px;";
       var buttonDiv = document.createElement('div');
@@ -425,8 +436,19 @@ if (location.hostname === "localhost") {
     //  var userName = "al";
     _threeViveObject.loginUser = function() {
       var payload = {};
+
+      if (threeViveCookieValue == "true") {
+          payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      }
+      else if{
+
+
       payload.username = document.getElementById("adPassUserNameLog").value;
       payload.password = document.getElementById("adPassUsernamePassword").value;
+  }
+
+
       if ((payload.username != null || payload.username != "") && (payload.password != null || payload.password != "")) {
         var api = hostUrl + '/api/v1/users/user/' + payload.username;
         fetch(api, {
@@ -444,6 +466,7 @@ if (location.hostname === "localhost") {
           console.log(data);
           _threeViveObject.userName = payload.username;
           _threeViveObject.password = payload.password;
+            document.cookie = "3ViveCookieUsr=" +payload.username + ";" + "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
           _threeViveObject.load3ViveModule();
         })
