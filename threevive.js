@@ -56,7 +56,7 @@ if (location.hostname === "localhost") {
           _threeViveObject.generateButtons();
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
-        document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
+
         return false;
       }
     }
@@ -409,6 +409,7 @@ if (location.hostname === "localhost") {
            _threeViveObject.load3ViveModule();
 
            currentACBal = newUser.userAccount.accountBalance;
+             document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
           // var x = document.getElementById("snackbar");
@@ -468,6 +469,7 @@ if (location.hostname === "localhost") {
           _threeViveObject.password = payload.password;
             document.cookie = "3ViveCookieUsr=" +payload.username + ";" + "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
+             document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
           _threeViveObject.load3ViveModule();
         })
       }
