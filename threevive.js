@@ -473,7 +473,7 @@ if (location.hostname === "localhost") {
       payload.username = threeVive.userName;
       payload.password = threeVive.password;
       if ((payload.username != null || payload.username != "")) {
-        var api = hostUrl + '/api/v1/wallet/pay/userName=' + _threeViveObject.username;
+        var api = hostUrl + '/api/v1/wallet/pay/userName=' +   payload.username;
         fetch(api, {
           headers: {
             'Accept': 'application/json',
