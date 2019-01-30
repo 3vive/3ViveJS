@@ -260,7 +260,7 @@ if (location.hostname === "localhost") {
 
       if (threeViveCookieValue == "true") {
 
-        _threeViveObject.loginUser();
+        //_threeViveObject.loginUser();
 
 
       }
