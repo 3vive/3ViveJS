@@ -46,13 +46,14 @@ if (location.hostname === "localhost") {
       //Check if cookie has value if it does pass it to the registerServiceWorker
       //read that cookie and pass it back
       var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)threeViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-      _threeViveObject.generateButtons();
+
       if (threeViveCookieValue == 'true') {
         //_threeViveObject.loadAllAdRevenue();
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
         return true;
-      } else if (threeViveCookieValue == 'false') {
+      } else if (threeViveCookieValue == 'false' || threeViveCookieValue == '' || threeViveCookieValue == undefined) {
+          _threeViveObject.generateButtons();
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
         document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
