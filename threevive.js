@@ -442,7 +442,7 @@ if (location.hostname === "localhost") {
           payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
             payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
       }
-      else if{
+      else{
 
 
       payload.username = document.getElementById("adPassUserNameLog").value;
