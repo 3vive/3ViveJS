@@ -35,7 +35,7 @@ if (location.hostname === "localhost") {
     // document.body.appendChild(iframe);
     // console.log('iframe.contentWindow =', iframe.contentWindow);
     //read that cookie and pass it back
-    var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)threeViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     //Communicate through iframe using postmessage
     // var myObj = {
     //   test: "test",
@@ -45,7 +45,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.checkCookieState = function() {
       //Check if cookie has value if it does pass it to the registerServiceWorker
       //read that cookie and pass it back
-      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)threeViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
       if (threeViveCookieValue == 'true') {
         //_threeViveObject.loadAllAdRevenue();
