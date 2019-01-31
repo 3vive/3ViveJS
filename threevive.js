@@ -265,7 +265,7 @@ if (location.hostname === "localhost") {
           payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
 
-          currentACBal = userObj.userAccount.accountBalance;
+          //currentACBal = userObj.userAccount.accountBalance;
       }
 
 
