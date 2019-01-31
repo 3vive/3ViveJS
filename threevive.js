@@ -492,6 +492,8 @@ if (location.hostname === "localhost") {
       //  console.log(thisUser);
         return response.json;
       }).then(function(data) {
+
+        currentACBal = data.accountBalance;
         return data;
 
       })
