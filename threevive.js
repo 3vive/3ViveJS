@@ -479,9 +479,21 @@ if (location.hostname === "localhost") {
       }
     }
     _threeViveObject.getUserInfo = function(username, password) {
-      fetch(hostUrl + '/api/v1/users/' + username).then(function(thisUser) {
-        console.log(thisUser);
-        return thisUser;
+      var api = hostUrl + '/api/v1/users/' + username;
+      fetch(api, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+        },
+        credentials: "include",
+        method: 'GET'
+      } ).then(function(response) {
+      //  console.log(thisUser);
+        return response.json;
+      }).then(function(data) {
+        return data;
+
       })
     }
     _threeViveObject.blurContent = function() {
