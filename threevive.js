@@ -484,7 +484,7 @@ if (location.hostname === "localhost") {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
+          'Authorization': 'Basic ' + btoa(username + ":" + password),
         },
         credentials: "include",
         method: 'GET'
