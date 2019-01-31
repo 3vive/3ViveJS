@@ -261,7 +261,7 @@ if (location.hostname === "localhost") {
       if (threeViveCookieValue == "true") {
   var payload = {};
         //_threeViveObject.loginUser();
-        payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        payload.username = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
           payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
 
@@ -470,7 +470,8 @@ if (location.hostname === "localhost") {
           console.log(data);
           _threeViveObject.userName = payload.username;
           _threeViveObject.password = payload.password;
-            document.cookie = "3ViveCookieUsr=" +payload.username + ";" + "3ViveCookiePswd=" + payload.password +";" ;
+            document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
+            document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
           _threeViveObject.load3ViveModule();
