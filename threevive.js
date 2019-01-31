@@ -261,8 +261,11 @@ if (location.hostname === "localhost") {
       if (threeViveCookieValue == "true") {
 
         //_threeViveObject.loginUser();
+        payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+          payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
 
-
+          currentACBal = userObj.userAccount.accountBalance;
       }
 
 
@@ -477,6 +480,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.getUserInfo = function(username, password) {
       fetch(hostUrl + '/api/v1/users/' + username).then(function(thisUser) {
         console.log(thisUser);
+        return thisUser;
       })
     }
     _threeViveObject.blurContent = function() {
