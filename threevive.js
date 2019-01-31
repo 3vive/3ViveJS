@@ -259,7 +259,7 @@ if (location.hostname === "localhost") {
 
 
       if (threeViveCookieValue == "true") {
-
+  var payload = {};
         //_threeViveObject.loginUser();
         payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
           payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
