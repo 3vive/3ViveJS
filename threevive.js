@@ -281,7 +281,10 @@ if (location.hostname === "localhost") {
         //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
-      document.getElementById("ViveButtons").style.display = "none";
+      if (  document.getElementById("ViveButtons") !== undefined) {
+  document.getElementById("ViveButtons").style.display = "none";
+      }
+
 /* MAke call to service to deduct payments**/
 
     };
