@@ -482,7 +482,7 @@ if (location.hostname === "localhost") {
       }
     }
     _threeViveObject.getUserInfo = function(username, password) {
-      var api = hostUrl + '/api/v1/users?' + username;
+      var api = hostUrl + '/api/v1/users/' + username;
       fetch(api, {
         headers: {
           'Accept': 'application/json',
