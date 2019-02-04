@@ -281,7 +281,7 @@ if (location.hostname === "localhost") {
         //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
-      if (  document.getElementById("ViveButtons") !== undefined ||  document.getElementById("ViveButtons") !== null) {
+      if (  document.getElementById("ViveButtons") !== undefined ||  document.getElementById("ViveButtons") == null) {
   document.getElementById("ViveButtons").style.display = "none";
       }
 
