@@ -533,7 +533,7 @@ if (location.hostname === "localhost") {
             'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
           },
           credentials: "include",
-          method: 'GET'
+          method: 'POST'
         }).then(function(response) {
           alert(response);
           return response.json();
