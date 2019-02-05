@@ -258,7 +258,8 @@ if (location.hostname === "localhost") {
     _threeViveObject.load3ViveModule = function() {
 
 
-      if (threeViveCookieValue == "true") {
+      // if (threeViveCookieValue == "true") {
+      if(false == true){
   var payload = {};
         //_threeViveObject.loginUser();
         payload.username = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
@@ -267,7 +268,10 @@ if (location.hostname === "localhost") {
 
           //currentACBal = userObj.userAccount.accountBalance;
       }
+      if (threeViveCookieValue == "true") {
+        currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
+      }
 
 
       var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
@@ -535,6 +539,8 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
+
+          document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
           var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
           myEleToUnBlur[0].classList.remove('paywallTrunk');
         })
