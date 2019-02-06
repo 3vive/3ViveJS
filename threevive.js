@@ -26,7 +26,7 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
-    if (  window.threeVive == undefined) {
+    if (  window.threeVive !== undefined) {
        window.threeVive.userName = "";
        window.threeVive.password = "";
     }
