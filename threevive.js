@@ -26,8 +26,10 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
-    _threeViveObject.userName;
-    _threeViveObject.password;
+    window.threeVive.userName
+    window.threeVive.password
+    //_threeViveObject.userName;
+    //_threeViveObject.password;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -475,8 +477,8 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
-          _threeViveObject.userName = payload.username;
-          _threeViveObject.password = payload.password;
+          window.threeVive.userName = payload.username;
+          window.threeVive.password = payload.password;
             document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
             document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
