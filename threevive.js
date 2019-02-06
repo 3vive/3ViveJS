@@ -482,6 +482,9 @@ if (location.hostname === "localhost") {
            currentACBal = data.userAccount.accountBalance;
              document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
+
+             document.getElementById("closeButton").click();
+
           _threeViveObject.load3ViveModule();
         })
       }
