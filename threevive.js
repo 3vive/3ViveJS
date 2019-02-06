@@ -480,6 +480,7 @@ if (location.hostname === "localhost") {
             document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
             document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
+             document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
           _threeViveObject.load3ViveModule();
         })
