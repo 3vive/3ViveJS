@@ -483,6 +483,7 @@ if (location.hostname === "localhost") {
              document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
 
+             document.getElementById("ViveButtons").style.display = "none";
              document.getElementById("closeButton").click();
 
           _threeViveObject.load3ViveModule();
