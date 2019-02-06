@@ -26,8 +26,12 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
-    window.threeVive.userName
-    window.threeVive.password
+    if (  window.threeVive.userName == undefined) {
+       window.threeVive.userName = "";
+       window.threeVive.password = "";
+    }
+
+
     //_threeViveObject.userName;
     //_threeViveObject.password;
     //Generate the iframe in parent window
