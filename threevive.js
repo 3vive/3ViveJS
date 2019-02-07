@@ -427,9 +427,10 @@ if (location.hostname === "localhost") {
 
             }
           }
+                 currentACBal = newUser.userAccount.accountBalance;
            _threeViveObject.load3ViveModule();
 
-           currentACBal = newUser.userAccount.accountBalance;
+
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
