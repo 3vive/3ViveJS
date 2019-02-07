@@ -26,10 +26,10 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
-    if (  window.threeVive !== undefined) {
-       window.threeVive.userName = "";
-       window.threeVive.password = "";
-    }
+
+       _threeViveObject.userName;
+       _threeViveObject.password;
+
 
 
     //_threeViveObject.userName;
@@ -55,6 +55,11 @@ if (location.hostname === "localhost") {
 
       if (threeViveCookieValue == 'true') {
         //_threeViveObject.loadAllAdRevenue();
+
+        _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+        _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
         return true;
@@ -481,8 +486,8 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
-          window.threeVive.userName = payload.username;
-          window.threeVive.password = payload.password;
+          _threeViveObject.userName = payload.username;
+          _threeViveObject.password = payload.password;
             document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
             document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
@@ -533,8 +538,8 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.deductPay = function() {
       var payload = {};
-      payload.username = window.threeVive.userName;
-      payload.password = window.threeVive.password;
+      payload.username = _threeViveObject.userName;
+      payload.password = _threeViveObject.password;
       if ((payload.username != null || payload.username != "")) {
         var api = hostUrl + '/api/v1/wallet/pay?userName=' +   payload.username;
         fetch(api, {
@@ -550,7 +555,7 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
-
+          document.getElementsByClassName("paywallButtons")[0].style.display = "none"
           document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
           var myEleToUnBlur = document.getElementsByClassName('blur');
           myEleToUnBlur[0].style.color = "black";
