@@ -559,6 +559,9 @@ if (location.hostname === "localhost") {
           document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
           var myEleToUnBlur = document.getElementsByClassName('blur');
           myEleToUnBlur[0].style.color = "black";
+          myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
+          myEleToUnBlur[0].className =   myEleToUnBlur[0].className.replace(/\paywallTrunk\b/g , "");
+
         })
       }
     }
