@@ -555,7 +555,7 @@ if (location.hostname === "localhost") {
           return response.json();
         }).then(function(data) {
           console.log(data);
-          document.getElementsByClassName("paywallButtons")[0].style.display = "none"
+          //document.getElementsByClassName("paywallButtons")[0].style.display = "none"
           document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
           var myEleToUnBlur = document.getElementsByClassName('blur');
           myEleToUnBlur[0].style.color = "black";
