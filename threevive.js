@@ -3,9 +3,9 @@ Copyright 3Vive Company
 *****/
 var hostUrl; // = 'http://app.3vive.com:8080' ;
 if (location.hostname === "localhost") {
-  hostUrl = "http://localhost:8080"
+  hostUrl = "http://localhost:80"
 } else {
-  hostUrl = "http://app.3vive.com:8080";
+  hostUrl = "http://app.3vive.com:80";
 }
 (function(window) {
   // You can enable the strict mode commenting the following line
