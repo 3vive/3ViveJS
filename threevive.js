@@ -59,6 +59,7 @@ if (location.hostname === "localhost") {
         _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
         _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+          currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
