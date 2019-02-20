@@ -493,7 +493,7 @@ if (location.hostname === "localhost") {
             document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
             document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
            currentACBal = data.userAccount.accountBalance;
-             document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
+             document.cookie = "3ViveCookieUpdatedBalance=" + data.userAccount.accountBalance +";" ;
              document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
 
              document.getElementById("ViveButtons").style.display = "none";
@@ -518,7 +518,7 @@ if (location.hostname === "localhost") {
         return response.json;
       }).then(function(data) {
 
-        currentACBal = data.accountBalance;
+        currentACBal = data.userAccount.accountBalance;
         return data;
 
       })
