@@ -432,7 +432,9 @@ if (location.hostname === "localhost") {
            _threeViveObject.load3ViveModule();
 
 
-             document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
+             document.cookie = "3ViveCookie=true;";
+             document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
+             // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
           // var x = document.getElementById("snackbar");
