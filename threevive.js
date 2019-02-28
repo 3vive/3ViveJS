@@ -433,7 +433,7 @@ if (location.hostname === "localhost") {
 
 
              document.cookie = "3ViveCookie=true;";
-             document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
+             document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
              // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
