@@ -60,6 +60,10 @@ if (location.hostname === "localhost") {
           currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
+        var adElems = document.getElementsByClassName("advertisement-content");
+      for (var i = 0; i < adElems.length; i++) {
+        adElems[i].style.display = "none";
+      };
         return true;
       } else if (threeViveCookieValue == 'false' || threeViveCookieValue == '' || threeViveCookieValue == undefined) {
           _threeViveObject.generateButtons();
@@ -255,7 +259,6 @@ if (location.hostname === "localhost") {
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
       };
-      //document.getElementByClassName("paywallTrunk")[0].className = "paywallTrunkClose";
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
