@@ -55,12 +55,9 @@ if (location.hostname === "localhost") {
 
       if (threeViveCookieValue == 'true') {
         //_threeViveObject.loadAllAdRevenue();
-
         _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
         _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
           currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
         return true;
@@ -252,11 +249,8 @@ if (location.hostname === "localhost") {
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove("paywallTrunk");
+      myEleToUnBlur[0].style.color = "black";
       document.getElementsByClassName("blur").removeAttribute("style");
-      //  myEleToUnBlur[0].style.color = null;
-      // var value = null;
-      // myEleToUnBlur[0].style.textShadow = value;
-      //  document.getElementById('ViveButtons').style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
@@ -528,8 +522,8 @@ if (location.hostname === "localhost") {
     _threeViveObject.blurContent = function() {
       var myEleToBlur = document.getElementsByClassName('paywallTrunk');
       myEleToBlur[0].style.color = "transparent";
-      var value = '0 0 10px rgba(0,0,0,0.1)';
-      myEleToBlur[0].style.textShadow = value;
+      //var value = '0 0 10px rgba(0,0,0,0.1)';
+      //myEleToBlur[0].style.textShadow = value;
     }
     // Just create a property to our library object.
     _threeViveObject.Log = function(thingToLog) {
