@@ -253,6 +253,7 @@ if (location.hostname === "localhost") {
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove("paywallTrunk");
+      var myEleToUnBlur = document.getElementsById('paywallTrunk');
       myEleToUnBlur[0].style.color = "black";
       document.getElementsByClassName("blur").removeAttribute("style");
       var adElems = document.getElementsByClassName("advertisement-content");
