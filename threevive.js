@@ -254,7 +254,7 @@ if (location.hostname === "localhost") {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
       myEleToUnBlur[0].classList.remove("paywallTrunk");
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
-      myEleToUnBlur2[0].style.color = "unset";
+      myEleToUnBlur2.style.color = "unset";
       document.getElementsByClassName("blur").removeAttribute("style");
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
