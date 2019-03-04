@@ -61,9 +61,9 @@ if (location.hostname === "localhost") {
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
         var adElems = document.getElementsByClassName("advertisement-content");
-      for (var i = 0; i < adElems.length; i++) {
-        adElems[i].style.display = "none";
-      };
+        for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
         return true;
       } else if (threeViveCookieValue == 'false' || threeViveCookieValue == '' || threeViveCookieValue == undefined) {
           _threeViveObject.generateButtons();
@@ -563,7 +563,10 @@ if (location.hostname === "localhost") {
           myEleToUnBlur.style.color = "black";
           myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
           myEleToUnBlur[0].className =   myEleToUnBlur[0].className.replace(/\paywallTrunk\b/g , "");
-
+          var adElems = document.getElementsByClassName("advertisement-content");
+          for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
         })
       }
     }
