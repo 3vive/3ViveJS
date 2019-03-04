@@ -3,9 +3,9 @@ Copyright 3Vive Company
 *****/
 var hostUrl; // = 'http://app.3vive.com:8080' ;
 if (location.hostname === "localhost") {
-  hostUrl = "http://localhost:8080"
+  hostUrl = "http://localhost:80"
 } else {
-  hostUrl = "http://app.3vive.com:8080";
+  hostUrl = "http://app.3vive.com:80";
 }
 (function(window) {
   // You can enable the strict mode commenting the following line
@@ -26,7 +26,14 @@ if (location.hostname === "localhost") {
       head.appendChild(link);
     }
     var currentACBal;
-    _threeViveObject.userName;
+
+       _threeViveObject.userName;
+       _threeViveObject.password;
+
+
+
+    //_threeViveObject.userName;
+    //_threeViveObject.password;
     //Generate the iframe in parent window
     // var iframe = document.createElement('iframe');
     // var html = '<body><div id="testerFrame"> Test </div></body>';
@@ -34,7 +41,7 @@ if (location.hostname === "localhost") {
     // document.body.appendChild(iframe);
     // console.log('iframe.contentWindow =', iframe.contentWindow);
     //read that cookie and pass it back
-    var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)threeViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     //Communicate through iframe using postmessage
     // var myObj = {
     //   test: "test",
@@ -44,17 +51,25 @@ if (location.hostname === "localhost") {
     _threeViveObject.checkCookieState = function() {
       //Check if cookie has value if it does pass it to the registerServiceWorker
       //read that cookie and pass it back
-      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)threeViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-      _threeViveObject.generateButtons();
+      var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
       if (threeViveCookieValue == 'true') {
         //_threeViveObject.loadAllAdRevenue();
+        _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+          currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
+        var adElems = document.getElementsByClassName("advertisement-content");
+        for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
         return true;
-      } else if (threeViveCookieValue == 'false') {
+      } else if (threeViveCookieValue == 'false' || threeViveCookieValue == '' || threeViveCookieValue == undefined) {
+          _threeViveObject.generateButtons();
         //generate cookie info from parent
         //contentDocument.cookie = "threeViveCookie=Test_CookieRandomStringOfChars";  //this one once it's in the iframe
-        document.cookie = "3ViveCookie=true"; // this is we push it from the parent to the iframe
+
         return false;
       }
     }
@@ -237,35 +252,53 @@ if (location.hostname === "localhost") {
     }
     _threeViveObject.loadAllAdRevenue = function() {
       var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
-      myEleToUnBlur[0].classList.remove('paywallTrunk');
-      //  myEleToUnBlur[0].style.color = null;
-      // var value = null;
-      // myEleToUnBlur[0].style.textShadow = value;
-      //  document.getElementById('ViveButtons').style.display = "none";
+      myEleToUnBlur[0].classList.remove("paywallTrunk");
+      var myEleToUnBlur2 = document.getElementById('paywallTrunk');
+      myEleToUnBlur2[0].style.color = "unset";
+      document.getElementsByClassName("blur").removeAttribute("style");
       var adElems = document.getElementsByClassName("advertisement-content");
       for (var i = 0; i < adElems.length; i++) {
         adElems[i].style.display = "block";
       };
-      //document.getElementByClassName("paywallTrunk")[0].className = "paywallTrunkClose";
       document.getElementById("ViveButtons").style.display = "none";
+      document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
       // Make some sort of DFP Ad refresh request here
     };
     _threeViveObject.load3ViveModule = function() {
-      var btnStyles = "background:#129979;border:none;width:60%;color:#fff;padding:5px;margin:5px;border-radius: 15px;";
-      var btnStylesWallet = "background:#129979;border:none;color:#fff;padding:5px;margin:0px;border-radius: 15px;width:80% !important;";
-      var btnStylesInverse = "background:white;border:2px solid #129979;width:60%;color:#129979;padding:3px;margin:5px;border-radius: 15px";
 
+
+      // if (threeViveCookieValue == "true") {
+      if(false == true){
+  var payload = {};
+        //_threeViveObject.loginUser();
+        payload.username = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+          payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
+
+          //currentACBal = userObj.userAccount.accountBalance;
+      }
+      if (threeViveCookieValue == "true") {
+        currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+      }
+
+
+      var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
+      var btnStylesInverse2 = "background:white;border:1px solid #129979;color:#129979;margin:5px;border-radius: 15px;";
       var buttonDiv = document.createElement('div');
       buttonDiv.id = "VivePay";
       buttonDiv.style.textAlign = "center";
       buttonDiv.innerHTML = "<div style='border-top:1px solid #129979;border-right: 1px solid #129979;border-left: 1px solid #129979;margin:auto;width:90%;height:23px'><div style='color:#129979;background-color:#fff;width:100px;margin: -14px auto;border: solid 1px;border-radius: 15px;'>ADPASS</div></div>" +
-        "<input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles + "' class='inputButton' />" +
-        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse + "' />";
+        "<div class='inputContainer'><input type='button' onclick='threeVive.deductPay();' value='Pay with Adpass' style='" + btnStyles2 + "' class='inputButton' />My Wallet: "+ currentACBal +" </div>" +
+        "<input type='button' onclick='threeVive.loadAllAdRevenue();' value='Free with ADs' style='" + btnStylesInverse2 + "' />";
         //debugger;
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
-      document.getElementById("ViveButtons").style.display = "none";
+      if (  document.getElementById("ViveButtons") !== undefined &&  document.getElementById("ViveButtons") == null) {
+  document.getElementById("ViveButtons").style.display = "none";
+      }
+
 /* MAke call to service to deduct payments**/
 
     };
@@ -368,7 +401,7 @@ if (location.hostname === "localhost") {
       }).then(function(newUser) {
         console.log(newUser);
         debugger;
-        if (newUser.enabled == true || newUser.enabled == "true") { //account creation is true then send over the account
+        if ( /***newUser.enabled == true || newUser.enabled == "true"***/ true == true) { //account creation is true then send over the account
 
           var message = "Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...";
           var div = document.createElement("div");
@@ -381,10 +414,10 @@ if (location.hostname === "localhost") {
           div.style.display = "block";
 
 
-          span.onclick = function() {
-            div.style.display = "none";
-            window.location.reload();
-          }
+          // span.onclick = function() {
+          //   div.style.display = "none";
+          //   window.location.reload();
+          // }
 
           // When the user clicks anywhere outside of the modal, close it
           window.onclick = function(event) {
@@ -393,9 +426,13 @@ if (location.hostname === "localhost") {
 
             }
           }
+                 currentACBal = newUser.userAccount.accountBalance;
+           _threeViveObject.load3ViveModule();
 
 
-          // currentACBal = newUser.userAccount.accountBalance;
+             document.cookie = "3ViveCookie=true;";
+             document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
+             // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
           // var x = document.getElementById("snackbar");
@@ -423,8 +460,19 @@ if (location.hostname === "localhost") {
     //  var userName = "al";
     _threeViveObject.loginUser = function() {
       var payload = {};
+
+      if (threeViveCookieValue == "true") {
+          payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      }
+      else{
+
+
       payload.username = document.getElementById("adPassUserNameLog").value;
       payload.password = document.getElementById("adPassUsernamePassword").value;
+  }
+
+
       if ((payload.username != null || payload.username != "") && (payload.password != null || payload.password != "")) {
         var api = hostUrl + '/api/v1/users/user/' + payload.username;
         fetch(api, {
@@ -441,20 +489,45 @@ if (location.hostname === "localhost") {
         }).then(function(data) {
           console.log(data);
           _threeViveObject.userName = payload.username;
+          _threeViveObject.password = payload.password;
+            document.cookie = "3ViveCookieUsr=" + payload.username + ";" ;
+            document.cookie = "3ViveCookiePswd=" + payload.password +";" ;
+           currentACBal = data.userAccount.accountBalance;
+             document.cookie = "3ViveCookieUpdatedBalance=" + data.userAccount.accountBalance +";" ;
+             document.cookie = "3ViveCookie=true;"; // this is we push it from the parent to the iframe
+
+             document.getElementById("ViveButtons").style.display = "none";
+             document.getElementById("closeButton").click();
+
           _threeViveObject.load3ViveModule();
         })
       }
     }
     _threeViveObject.getUserInfo = function(username, password) {
-      fetch(hostUrl + '/api/v1/users/' + username).then(function(thisUser) {
-        console.log(thisUser);
+      var api = hostUrl + '/api/v1/users/' + username;
+      fetch(api, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(username + ":" + password),
+        },
+        credentials: "include",
+        method: 'GET'
+      } ).then(function(response) {
+      //  console.log(thisUser);
+        return response.json;
+      }).then(function(data) {
+
+        currentACBal = data.userAccount.accountBalance;
+        return data;
+
       })
     }
     _threeViveObject.blurContent = function() {
       var myEleToBlur = document.getElementsByClassName('paywallTrunk');
       myEleToBlur[0].style.color = "transparent";
-      var value = '0 0 10px rgba(0,0,0,0.1)';
-      myEleToBlur[0].style.textShadow = value;
+      //var value = '0 0 10px rgba(0,0,0,0.1)';
+      //myEleToBlur[0].style.textShadow = value;
     }
     // Just create a property to our library object.
     _threeViveObject.Log = function(thingToLog) {
@@ -467,10 +540,10 @@ if (location.hostname === "localhost") {
 
     _threeViveObject.deductPay = function() {
       var payload = {};
-      payload.username = document.getElementById("adPassUserNameLog").value;
-      payload.password = document.getElementById("adPassUsernamePassword").value;
+      payload.username = _threeViveObject.userName;
+      payload.password = _threeViveObject.password;
       if ((payload.username != null || payload.username != "")) {
-        var api = hostUrl + '/api/v1/wallet/pay/userName=' + _threeViveObject.username;
+        var api = hostUrl + '/api/v1/wallet/pay?userName=' +   payload.username;
         fetch(api, {
           headers: {
             'Accept': 'application/json',
@@ -478,14 +551,22 @@ if (location.hostname === "localhost") {
             'Authorization': 'Basic ' + btoa(payload.username + ":" + payload.password),
           },
           credentials: "include",
-          method: 'GET'
+          method: 'POST'
         }).then(function(response) {
           alert(response);
           return response.json();
         }).then(function(data) {
           console.log(data);
-          var myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
-          myEleToUnBlur[0].classList.remove('paywallTrunk');
+          //document.getElementsByClassName("paywallButtons")[0].style.display = "none"
+          document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
+          var myEleToUnBlur = document.getElementById('paywallTrunk');
+          myEleToUnBlur.style.color = "black";
+          myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
+          myEleToUnBlur[0].className =   myEleToUnBlur[0].className.replace(/\paywallTrunk\b/g , "");
+          var adElems = document.getElementsByClassName("advertisement-content");
+          for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
         })
       }
     }
