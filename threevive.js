@@ -25,10 +25,9 @@ if (location.hostname === "localhost") {
       link.media = 'all';
       head.appendChild(link);
     }
-    var currentACBal;
-
-       _threeViveObject.userName;
-       _threeViveObject.password;
+       this.prototype.currentACBal;
+       this.prototype.userName;
+       this.prototype.password;
 
 
 
@@ -57,7 +56,7 @@ if (location.hostname === "localhost") {
         //_threeViveObject.loadAllAdRevenue();
         _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-          currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        _threeViveObject.currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
         var adElems = document.getElementsByClassName("advertisement-content");
@@ -431,7 +430,7 @@ if (location.hostname === "localhost") {
 
 
              document.cookie = "3ViveCookie=true;";
-             document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
+             document.cookie = "3ViveCookieUpdatedBalance=" +  newUser.userAccount.accountBalance +";" ;
              // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
@@ -464,6 +463,7 @@ if (location.hostname === "localhost") {
       if (threeViveCookieValue == "true") {
           payload.username =document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
             payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
       }
       else{
 
