@@ -27,8 +27,8 @@ if (location.hostname === "localhost") {
     }
       var currentACBal;
 
-       this.userName;
-       this.password;
+        var userName;
+       var password;
 
 
 
