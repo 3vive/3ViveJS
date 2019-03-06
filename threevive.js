@@ -25,10 +25,10 @@ if (location.hostname === "localhost") {
       link.media = 'all';
       head.appendChild(link);
     }
-    var currentACBal;
+      var currentACBal;
 
-       _threeViveObject.userName;
-       _threeViveObject.password;
+       this.userName;
+       this.password;
 
 
 
@@ -427,11 +427,12 @@ if (location.hostname === "localhost") {
           //   }
           // }
                  currentACBal = newUser.userAccount.accountBalance;
+                  document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
            _threeViveObject.load3ViveModule();
 
 
              document.cookie = "3ViveCookie=true;";
-             document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
+
              // this is we push it from the parent to the iframe
           // var thishtml = '<div id="snackbar">' + currentACBal + '</div>'
           // document.body.appendChild(thishtml);
