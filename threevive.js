@@ -543,7 +543,12 @@ if (location.hostname === "localhost") {
       var payload = {};
       payload.username = _threeViveObject.userName;
       payload.password = _threeViveObject.password;
-      if ((payload.username != null || payload.username != "")) {
+      if(payload.username == undefined){
+        payload.username =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        payload.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+      }
+     if ((payload.username != null || payload.username != "")) {
         var api = hostUrl + '/api/v1/wallet/pay?userName=' +   payload.username;
         fetch(api, {
           headers: {
