@@ -426,6 +426,9 @@ if (location.hostname === "localhost") {
           //
           //   }
           // }
+
+          document.cookie = "3ViveCookieUsr=" + newUser.username + ";" ;
+          document.cookie = "3ViveCookiePswd=" + newUser.password +";" ;
                  currentACBal = newUser.userAccount.accountBalance;
                   document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
            _threeViveObject.load3ViveModule();
