@@ -568,7 +568,7 @@ if (location.hostname === "localhost") {
           console.log(data);
           //document.getElementsByClassName("paywallButtons")[0].style.display = "none"
           document.cookie = "3ViveCookieUpdatedBalance=" + data.accountBalance +";" ;
-          document.getElementById("walletIDCurr").value = "My Wallet: " + data.accountBalance;
+          document.getElementById("walletIDCurr").innerHTML = "My Wallet: " + data.accountBalance;
           var myEleToUnBlur = document.getElementById('paywallTrunk');
           myEleToUnBlur.style.color = "black";
           myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
