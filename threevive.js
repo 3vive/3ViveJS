@@ -271,7 +271,7 @@ if (location.hostname === "localhost") {
   var payload = {};
         //_threeViveObject.loginUser();
         payload.username = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-          payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
 
           //currentACBal = userObj.userAccount.accountBalance;
@@ -281,7 +281,7 @@ if (location.hostname === "localhost") {
 
       }
 
-      document.getElementById("ViveButtons").style.display = "none";
+
       var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
       var btnStylesInverse2 = "background:white;border:1px solid #129979;color:#129979;margin:5px;border-radius: 15px;";
       var buttonDiv = document.createElement('div');
@@ -446,6 +446,7 @@ if (location.hostname === "localhost") {
         }
         _threeViveObject.newUser = newUser;
       })
+      document.getElementById("ViveButtons").style.display = "none";
     }
     //create a new user
     var thisPartnerName = "NYDN";
