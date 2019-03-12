@@ -128,8 +128,6 @@ if (location.hostname === "localhost") {
       div.style.overflow = 'auto';
       div.style.paddingBottom = '20px';
       div.innerHTML = '<button type="button" id="closeButton" onclick="threeVive.closePopup()" style="background-color:#129979; margin-left:80%;width:8%;"> X</button> <h1 style="text-align: center;color:white;font-family: Helvetica Neue, sans-serif;font-weight: bold;letter-spacing: -1px;font-style: italic; font-size: 28px; padding-bottom:0;margin-top:-32px"><img src="https://image.flaticon.com/icons/svg/74/74474.svg" width="30px" height="30px"> Ad Pass</h1>';
-      // hide login form and show register form
-      // create some variables for styling
       var inputStyles = "background:#fff;border: 1px solid white;width:90%;color:#000;padding:5px;margin:5px;",
         btnStyles = "background:#fff;border:none;width:80%;color:#129979;padding:5px;margin:15px 5px 5px 5px;border-radius: 15px",
         forgetStyles = "color:#000;",
@@ -283,7 +281,7 @@ if (location.hostname === "localhost") {
 
       }
 
-
+      document.getElementById("ViveButtons").style.display = "none";
       var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
       var btnStylesInverse2 = "background:white;border:1px solid #129979;color:#129979;margin:5px;border-radius: 15px;";
       var buttonDiv = document.createElement('div');
@@ -364,7 +362,6 @@ if (location.hostname === "localhost") {
       //  alert("You entered a valid password: " + pwd1.value);
       return true;
     }
-    //http://18.219.104.16:8081/article-reg
     //Make fetch requests for all users
     _threeViveObject.getUsers = function() {
       fetch(hostUrl + '/api/v1/users').then(function(response) {
