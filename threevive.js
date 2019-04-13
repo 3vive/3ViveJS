@@ -253,38 +253,25 @@ if (location.hostname === "localhost") {
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
       myEleToUnBlur2.style.color = "unset";
       document.getElementsByClassName("blur").removeAttribute("style");
-      var adElems = document.getElementsByClassName("advertisement-content");
-      for (var i = 0; i < adElems.length; i++) {
-        adElems[i].style.display = "block";
-      };
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
-      // Make some sort of DFP Ad refresh request here
       var adElems = document.getElementsByClassName("advertisement-content");
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
           };
     };
     _threeViveObject.load3ViveModule = function() {
-
-
-      // if (threeViveCookieValue == "true") {
       if(false == true){
-  var payload = {};
-        //_threeViveObject.loginUser();
+        var payload = {};
         payload.username = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         payload.password = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var userObj =   _threeViveObject.getUserInfo(  payload.username,  payload.password);
-
-          //currentACBal = userObj.userAccount.accountBalance;
       }
       if (threeViveCookieValue == "true") {
         currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
       }
-
-
       var btnStyles2 = "background:#129979;border:none;width:auto !important;color:#fff;border-radius: 15px;padding:5px 15px 5px 15px;margin: 5px";
       var btnStylesInverse2 = "background:white;border:1px solid #129979;color:#129979;margin:5px;border-radius: 15px;";
       var buttonDiv = document.createElement('div');
@@ -429,8 +416,8 @@ if (location.hostname === "localhost") {
 
           document.cookie = "3ViveCookieUsr=" + newUser.username + ";" ;
           document.cookie = "3ViveCookiePswd=" + newUser.password +";" ;
-                 currentACBal = newUser.userAccount.accountBalance;
-                  document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
+          currentACBal = newUser.userAccount.accountBalance;
+          document.cookie = "3ViveCookieUpdatedBalance=" + currentACBal +";" ;
            _threeViveObject.load3ViveModule();
 
 
