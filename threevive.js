@@ -54,16 +54,15 @@ if (location.hostname === "localhost") {
       var threeViveCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
       if (threeViveCookieValue == 'true') {
-        //_threeViveObject.loadAllAdRevenue();
+        var adElems = document.getElementsByClassName("advertisement-content");
+        for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
         _threeViveObject.userName =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUsr\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.password =  document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookiePswd\s*\=\s*([^;]*).*$)|^.*$/, "$1");
           currentACBal  = document.cookie.replace(/(?:(?:^|.*;\s*)3ViveCookieUpdatedBalance\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         _threeViveObject.load3ViveModule();
         _threeViveObject.hideArticleContent();
-        var adElems = document.getElementsByClassName("advertisement-content");
-        for (var i = 0; i < adElems.length; i++) {
-           adElems[i].style.display = "none";
-          };
         return true;
       } else if (threeViveCookieValue == 'false' || threeViveCookieValue == '' || threeViveCookieValue == undefined) {
           _threeViveObject.generateButtons();
@@ -262,6 +261,10 @@ if (location.hostname === "localhost") {
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
       // Make some sort of DFP Ad refresh request here
+      var adElems = document.getElementsByClassName("advertisement-content");
+          for (var i = 0; i < adElems.length; i++) {
+           adElems[i].style.display = "none";
+          };
     };
     _threeViveObject.load3ViveModule = function() {
 
@@ -571,10 +574,6 @@ if (location.hostname === "localhost") {
           myEleToUnBlur.style.color = "black";
           myEleToUnBlur = document.getElementsByClassName('paywallTrunk');
           myEleToUnBlur[0].className =   myEleToUnBlur[0].className.replace(/\paywallTrunk\b/g , "");
-          var adElems = document.getElementsByClassName("advertisement-content");
-          for (var i = 0; i < adElems.length; i++) {
-           adElems[i].style.display = "none";
-          };
         })
       }
     }
