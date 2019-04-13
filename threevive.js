@@ -263,7 +263,7 @@ if (location.hostname === "localhost") {
       // Make some sort of DFP Ad refresh request here
       var adElems = document.getElementsByClassName("advertisement-content");
           for (var i = 0; i < adElems.length; i++) {
-           adElems[i].style.display = "none";
+           adElems[i].style.display = "block";
           };
     };
     _threeViveObject.load3ViveModule = function() {
@@ -563,8 +563,8 @@ if (location.hostname === "localhost") {
           credentials: "include",
           method: 'POST'
         }).then(function(response) {
-          //alert(response);
-          //return response.json();
+          alert(response);
+          return response.json();
         }).then(function(data) {
           console.log(data);
           //document.getElementsByClassName("paywallButtons")[0].style.display = "none"
