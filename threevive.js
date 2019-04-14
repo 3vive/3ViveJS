@@ -256,6 +256,7 @@ if (location.hostname === "localhost") {
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
+      debugger;
       var adElems = document.getElementsByClassName("advertisement-content");
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
