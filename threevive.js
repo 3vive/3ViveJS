@@ -477,7 +477,7 @@ if (location.hostname === "localhost") {
           credentials: "include",
           method: 'GET'
         }).then(function(response) {
-          alert(response);
+          //alert(response);
           return response.json();
         }).then(function(data) {
           console.log(data);
@@ -550,9 +550,9 @@ if (location.hostname === "localhost") {
           },
           credentials: "include",
           method: 'POST'
-        //}).then(function(response) {
+        }).then(function(response) {
           //alert(response);
-          //return response.json();
+          return response.json();
         }).then(function(data) {
           console.log(data);
           //document.getElementsByClassName("paywallButtons")[0].style.display = "none"
