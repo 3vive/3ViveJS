@@ -252,7 +252,7 @@ if (location.hostname === "localhost") {
       myEleToUnBlur[0].classList.remove("paywallTrunk");
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
       myEleToUnBlur2.style.color = "unset";
-      document.getElementsByClassName("blur").removeAttribute("style");
+      //document.getElementsByClassName("blur").removeAttribute("style");
       document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
