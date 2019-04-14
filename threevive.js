@@ -253,7 +253,7 @@ if (location.hostname === "localhost") {
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
       myEleToUnBlur2.style.color = "unset";
       //document.getElementsByClassName("blur").removeAttribute("style");
-      document.getElementById("ViveButtons").style.display = "none";
+      //document.getElementById("ViveButtons").style.display = "none";
       document.getElementById("VivePay").style.display = "none";
       document.getElementsByClassName("blur")[0].style.color = null;
       debugger;
@@ -285,7 +285,7 @@ if (location.hostname === "localhost") {
       var whereToAppendButtons = document.getElementsByClassName("paywallButtons")[0];
       whereToAppendButtons.appendChild(buttonDiv);
       if (  document.getElementById("ViveButtons") !== undefined &&  document.getElementById("ViveButtons") == null) {
-  document.getElementById("ViveButtons").style.display = "none";
+       document.getElementById("ViveButtons").style.display = "none";
       }
 
 /* MAke call to service to deduct payments**/
