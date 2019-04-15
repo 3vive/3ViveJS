@@ -252,11 +252,7 @@ if (location.hostname === "localhost") {
       myEleToUnBlur[0].classList.remove("paywallTrunk");
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
       myEleToUnBlur2.style.color = "unset";
-      //document.getElementsByClassName("blur").removeAttribute("style");
-      //document.getElementById("ViveButtons").style.display = "none";
-      document.getElementById("VivePay").style.display = "none";
-      //document.getElementsByClassName("blur")[0].style.color = null;
-      //debugger;
+      document.getElementsByClassName("paywallButtons").style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
@@ -388,7 +384,7 @@ if (location.hostname === "localhost") {
         return response.json();
       }).then(function(newUser) {
         console.log(newUser);
-        debugger;
+        //debugger;
         if ( /***newUser.enabled == true || newUser.enabled == "true"***/ true == true) { //account creation is true then send over the account
 
           var message = "Thank you for Registering. We've added a complimentary $5 dollars to you wallet. Use ADpass dollars on any sites where we are partnered with and enjoy an ad free experience. Let's get started...";
@@ -437,7 +433,7 @@ if (location.hostname === "localhost") {
         }
         _threeViveObject.newUser = newUser;
       })
-      document.getElementById("ViveButtons").style.display = "none";
+      document.getElementById("ViveButtons").style.display = "block";
     }
     //create a new user
     var thisPartnerName = "NYDN";
