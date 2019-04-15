@@ -257,7 +257,7 @@ if (location.hostname === "localhost") {
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
           };
-      document.getElementById("ViveButtons").style.display = "none";
+      //document.getElementById("ViveButtons").style.display = "none";
     };
     _threeViveObject.load3ViveModule = function() {
       if(false == true){
