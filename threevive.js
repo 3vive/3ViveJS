@@ -252,12 +252,12 @@ if (location.hostname === "localhost") {
       myEleToUnBlur[0].classList.remove("paywallTrunk");
       var myEleToUnBlur2 = document.getElementById('paywallTrunk');
       myEleToUnBlur2.style.color = "unset";
-      document.getElementsByClassName("paywallButtons").style.display = "none";
       var adElems = document.getElementsByClassName("advertisement-content");
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
           };
-      //document.getElementById("ViveButtons").style.display = "none";
+      document.getElementById("VivePay").style.display = "none";
+      document.getElementById("ViveButtons").style.display = "none";
     };
     _threeViveObject.load3ViveModule = function() {
       if(false == true){
