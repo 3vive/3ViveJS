@@ -257,6 +257,7 @@ if (location.hostname === "localhost") {
           for (var i = 0; i < adElems.length; i++) {
            adElems[i].style.display = "block";
           };
+      document.getElementById("ViveButtons").style.display = "none";
     };
     _threeViveObject.load3ViveModule = function() {
       if(false == true){
@@ -433,7 +434,7 @@ if (location.hostname === "localhost") {
         }
         _threeViveObject.newUser = newUser;
       })
-      document.getElementById("ViveButtons").style.display = "block";
+      document.getElementById("ViveButtons").style.display = "none";
     }
     //create a new user
     var thisPartnerName = "NYDN";
