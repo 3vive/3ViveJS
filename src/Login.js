@@ -1,26 +1,30 @@
 import React, {Component} from 'react';
 //import ReactDOM from 'react-dom';
-import { Card, Button, ButtonToolbar, ButtonGroup, Form, Container, Row, Col } from 'react-bootstrap';
-
+import { Card, Button, ButtonToolbar, ButtonGroup, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class Login extends Component {
   constructor(props) {
     super(props);
+    //BIND THE METHODS WITH THIS REFERENCE
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.showError = this.showError.bind(this);
     this.hideError = this.hideError.bind(this);
-
     this.state = {
       validated: false,
+      email:"",
+      password:"",
       error:[]
     }
   }
-  handleSubmit(){
+  handleSubmit(event){
+    console.log(event);
+    window.curevent = event;
     var errorMessage= "";
     if(this.refs["emailField"]){
       if(this.refs["emailField"].value === null || this.refs["emailField"].value === ""){
-        errorMessage = "The email field is required.";
+        errorMessage = "Email Address is required.";
         this.showError(errorMessage, "emailField");
       }
       else{
@@ -29,7 +33,7 @@ class Login extends Component {
     }
     if(this.refs["passwordField"]){
       if(this.refs["passwordField"].value === null || this.refs["passwordField"].value === ""){
-        errorMessage = "The password field is required.";
+        errorMessage = "Password is required.";
         this.showError(errorMessage, "passwordField");
       }
       else{
@@ -38,32 +42,43 @@ class Login extends Component {
     }
   }
   handleCancel(){
-
+    this.setState({
+      validated: false,
+      email:"",
+      password:"",
+      error:[]
+    });
   }
   handleChange(){
     var errorMessage = "";
     if(this.refs["emailField"]){
       if(this.refs["emailField"].value === null || this.refs["emailField"].value === ""){
-        errorMessage = "The email field is required.";
+        errorMessage = "Email Address is required.";
         this.showError(errorMessage, "emailField");
       }
       else{
-        this.hideError();
+        this.hideError("emailField");
       }
     }
-    if(this.refs["passwordField"]){
+    else if(this.refs["passwordField"]){
       if(this.refs["passwordField"].value === null || this.refs["passwordField"].value === ""){
-        errorMessage = "The password field is required.";
+        errorMessage = "Password is required.";
         this.showError(errorMessage, "passwordField");
       }
       else{
-        this.hideError();
+        this.hideError("passwordField");
       }
     }
+    this.setState({
+      email:this.refs["emailField"].value,
+      password:this.refs["passwordField"].value
+    });
   }
   showError(errorMessage, currentRef){
     var error = this.state.error;
-    error[currentRef] = errorMessage;
+    error[currentRef] = {};
+    error[currentRef]["message"] = errorMessage;
+    error[currentRef]["type"] = "invalid";
     console.log("error");
     console.log(error);
     window.error = error;
@@ -72,10 +87,16 @@ class Login extends Component {
       validated:true
     });
   }
-  hideError(){
+  hideError(currentRef){
+    var error = this.state.error;
+    error[currentRef] = {};
+    error[currentRef]["message"] = "";
+    error[currentRef]["type"] = "valid";
+    console.log("hide ERROR");
+    console.log(error);
     this.setState({
-      error:[],
-      validated:false
+      error:error,
+      validated:true
     });
   }
   render(){
@@ -89,13 +110,23 @@ class Login extends Component {
                   <Form validated={this.state.validated}>
                     <Form.Group controlId="formGroupEmail">
                       <Form.Label>Email Address</Form.Label>
-                      <Form.Control ref="emailField" type="email" placeholder="Enter email" required onChange={this.handleChange}/>
-                      <Form.Control.Feedback type="invalid">{(this.state.error && this.state.error["emailField"]) ? this.state.error["emailField"] : ""}</Form.Control.Feedback>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend"><i><FontAwesomeIcon icon={"envelope"}/></i></InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control type="email" ref="emailField" placeholder="Enter email" required onChange={this.handleChange} value={this.state.email}/>
+                        <Form.Control.Feedback type={(this.state.error && this.state.error["emailField"]) ? this.state.error["emailField"]["type"] : "valid"}>{(this.state.error && this.state.error["emailField"]) ? this.state.error["emailField"]["message"] : ""}</Form.Control.Feedback>
+                      </InputGroup>
                     </Form.Group>
                     <Form.Group controlId="formGroupPassword">
                       <Form.Label>Password</Form.Label>
-                      <Form.Control ref="passwordField" type="password" placeholder="Password" required onChange={this.handleChange}/>
-                      <Form.Control.Feedback type="invalid">{(this.state.error && this.state.error["passwordField"]) ? this.state.error["passwordField"] : ""}</Form.Control.Feedback>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend"><i><FontAwesomeIcon icon={"key"}/></i></InputGroup.Text>
+                        </InputGroup.Prepend>
+                      <Form.Control type="password" ref="passwordField" placeholder="Password" required onChange={this.handleChange} value={this.state.password}/>
+                      <Form.Control.Feedback type={(this.state.error && this.state.error["passwordField"]) ? this.state.error["passwordField"]["type"] : "valid"}>{(this.state.error && this.state.error["passwordField"]) ? this.state.error["passwordField"]["message"] : ""}</Form.Control.Feedback>
+                      </InputGroup>
                     </Form.Group>
                   </Form>
                   <Button id="submitButton" variant="primary" size="sm" className="mr-4" onClick={this.handleSubmit}>Login</Button>
