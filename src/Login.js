@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 //import ReactDOM from 'react-dom';
 import { Card, Button, ButtonToolbar, ButtonGroup, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Messages } from './config/ValidationMessages';
+
 class Login extends Component {
   constructor(props) {
     super(props);
-    //BIND THE METHODS WITH THIS REFERENCE
+    console.log("MESSAGES......");
+    console.log(Messages);
+    console.log(Messages.emailField);
+    //BIND THE METHODS WHICH NEEDS THE THIS REFERENCE HERE.
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,13 +24,13 @@ class Login extends Component {
     }
   }
   handleSubmit(event){
-    console.log(event);
-    window.curevent = event;
     var errorMessage= "";
+    var isValid = true;
     if(this.refs["emailField"]){
       if(this.refs["emailField"].value === null || this.refs["emailField"].value === ""){
-        errorMessage = "Email Address is required.";
+        errorMessage = Messages.emailField.mandatoryField;
         this.showError(errorMessage, "emailField");
+        isValid = false;
       }
       else{
         this.hideError();
@@ -33,13 +38,22 @@ class Login extends Component {
     }
     if(this.refs["passwordField"]){
       if(this.refs["passwordField"].value === null || this.refs["passwordField"].value === ""){
-        errorMessage = "Password is required.";
+        errorMessage = Messages.passwordField.mandatoryField;
         this.showError(errorMessage, "passwordField");
+        isValid =false;
       }
       else{
         this.hideError();
       }
     }
+    // debugger;
+    // if(isValid){
+    //   alert("API CALL NEEDS TO BE IMPLEMENTED");
+    //   this.setState({
+    //     email:this.refs["emailField"].value,
+    //     password:this.refs["passwordField"].value
+    //   });
+    // }
   }
   handleCancel(){
     this.setState({
@@ -53,16 +67,16 @@ class Login extends Component {
     var errorMessage = "";
     if(this.refs["emailField"]){
       if(this.refs["emailField"].value === null || this.refs["emailField"].value === ""){
-        errorMessage = "Email Address is required.";
+        errorMessage = Messages.emailField.mandatoryField;
         this.showError(errorMessage, "emailField");
       }
       else{
         this.hideError("emailField");
       }
     }
-    else if(this.refs["passwordField"]){
+    if(this.refs["passwordField"]){
       if(this.refs["passwordField"].value === null || this.refs["passwordField"].value === ""){
-        errorMessage = "Password is required.";
+        errorMessage = Messages.passwordField.mandatoryField;
         this.showError(errorMessage, "passwordField");
       }
       else{
@@ -105,8 +119,8 @@ class Login extends Component {
         <Row>
           <Col>
             <Card bg="success" border="dark" text="white" style={{width: '30rem'}}>
-              <Card.Header as="h4" className="">Ad Pass</Card.Header>
-              <Card.Body>
+              <Card.Header as="h4" className="loginCardHeader"><i className="loginCardHeaderIcon"><FontAwesomeIcon icon={"audio-description"}/></i>Pass</Card.Header>
+              <Card.Body className="loginCardBody">
                   <Form validated={this.state.validated}>
                     <Form.Group controlId="formGroupEmail">
                       <Form.Label>Email Address</Form.Label>
@@ -129,9 +143,11 @@ class Login extends Component {
                       </InputGroup>
                     </Form.Group>
                   </Form>
-                  <Button id="submitButton" variant="primary" size="sm" className="mr-4" onClick={this.handleSubmit}>Login</Button>
-                  <Button id="cancelButton" variant="secondary" size="sm" onClick={this.handleCancel}>Cancel</Button>
               </Card.Body>
+              <Card.Footer className="loginCardFooter text-center">
+                <Button id="submitButton" variant="primary" size="sm" className="mr-4" onClick={this.handleSubmit}>Login</Button>
+                <Button id="cancelButton" variant="secondary" size="sm" onClick={this.handleCancel}>Cancel</Button>
+              </Card.Footer>
             </Card>
           </Col>
         </Row>

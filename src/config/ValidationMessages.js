@@ -1,6 +1,9 @@
-var Messages={
+export const Messages={
   "emailField":{
-    "mandatoryField":{"message":"The email field is required", "type":"error"},
+    "mandatoryField":{"message":"Email Address is required", "type":"error"},
     "invalidFormat":{"message":"This is not a valid email", "type":"error"}
+  },
+  "passwordField":{
+    "mandatoryField":{"message":"Password is required", "type":"error"}
   }
 }
